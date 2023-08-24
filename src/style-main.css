@@ -1,0 +1,148 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html{
+    height: 100%;
+    background-color: #fffafa;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+}
+
+header{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    text-align: right;
+    background-image: linear-gradient(to right, #1a1a1a, #7a7978);
+}
+
+.logout{
+    color: #f7ebe2;
+    padding: 3px;
+    width: 80px;
+    font-size: 14px;
+    border-radius: 7px;
+    border: none;
+    background-color: #ee6f2e;
+    box-shadow: 0px 3px 5px 2px #484847;
+    margin-right: 40px;
+}
+
+.logout:hover{  
+    background-color: #e38759;
+  
+}
+
+ul{
+    list-style-type: none
+}
+
+footer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    height: 3%; 
+    background-color: #7a7978;
+}
+
+footer a{
+    text-decoration: none;
+    color:white;
+}
+
+footer a:hover{
+    color:#e38759;
+}
+
+.content{
+    width: 100%;
+    height: 92%;
+    background-color: #d8d5d5;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+img{
+    width: 100%;
+}
+.days{
+    border-radius: 15px;
+    box-shadow: 0px 3px 5px 2px #484847;
+    display: flex;
+}
+
+.title{
+    background-color: #cf6f08;
+    padding: 10px;
+    border-style:solid;
+    border-color: #3b3b3b;
+    border-right: none;
+}
+
+h1{
+    font-size: 20px;
+    color: rgb(230, 233, 235);
+}
+
+.appointments{
+    background-color: #d78936;
+    height: 500px;
+    border-style:solid;
+    border-color: #3b3b3b;
+    border-right: none;
+    border-top: none;
+    width: 170px;
+}
+
+
+
+.sunday .appointments{
+    border-right-style: solid;
+    border-bottom-right-radius: 15px;
+}
+
+.monday .appointments{
+    border-bottom-left-radius: 15px;
+}
+
+.monday .title{
+    border-top-left-radius: 15px;
+}
+
+.sunday .title{
+    border-right-style: solid;
+    border-color: #3b3b3b;
+    border-top-right-radius: 15px;
+}
+
+.appointmentItem{
+    display: flex;
+    height: 25px;
+    align-items: center;
+    margin-bottom: 1px;
+    border-bottom-style: ridge;
+    border-color: #6b6b6a;
+}
+
+.hour{
+    width: 10%;
+}
+.appointmentDesc{
+    text-align: center;
+    justify-content: center;
+    width: 90%;
+}
