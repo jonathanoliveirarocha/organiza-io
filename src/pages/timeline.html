@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma</title>
+    <title>Organiza.io</title>
     <link rel="stylesheet" href="../style-main.css">
+    <script src="../scripts/main.js"></script>
 </head>
 <body>
+    
+    
+    
     <div class="main">
       <header>
+        <div class="logo">
+            <a href="#"><h1>Organiza<span>.io</span></h1></a>
+        </div>
         <nav>
             <ul>
             <li>
@@ -20,6 +27,7 @@
         </nav>
       </header>  
       <div class="content">
+        
         <div class="days">
             <div class="monday">
                 <div class="title">
@@ -108,9 +116,14 @@
             </div>
 
         </div>
-
+        
       </div>
 
+      <div class="edit">
+        <input id="add" type="button" value="Adicionar" onclick="add()">
+        <input id="rem" type="button" value="Remover">
+      </div>
+      
       <footer>
         <a href="https://github.com/jonathanoliveirarocha" target="_blank">&copy Jonathan de Oliveira Rocha</a>
 
@@ -119,5 +132,50 @@
 
 
     </div>
+
+    <div class="efect">
+        <div class="updateForm">
+            <div class="closeWindow" onclick="closeWindow()">
+                <img src="../images/closeWindow.png" alt="">
+                <!-- Used Image: https://br.freepik.com/icone/fechar_6276642#fromView=search&term=close+&page=1&position=63 -->
+            </div>
+            <div class="addForm">
+                <div class="formAddInputs">
+                    <form action="#" method="POST">
+                        <h1>Adicionar</h1>
+                        <p>Dia da Semana:</p>
+                        <select name="daySelection" id="daySelection" required>
+                            <option value="disabled" disabled selected>Selecione um Dia</option>
+                            <option value="monday">Segunda-feira</option>
+                            <option value="tuesday">Terça-feira</option>
+                            <option value="wednesday">Quarta-feira</option>
+                            <option value="thursday">Quinta-feira</option>
+                            <option value="friday">Sexta-feira</option>
+                            <option value="saturday">Sábado</option>
+                            <option value="sunday">Domingo</option>
+                        </select>
+    
+                        <p>Início:</p>
+                        <input name="start" id="start" type="time" required>
+    
+                        <p>Término:</p>
+                        <input name="end" id="end" type="time" required>
+    
+                        <p>Atividade:</p>
+                        <input name="activity" placeholder="Digite um Rótulo para a Atividade" type="text" required>
+    
+                        <p>Descrição:</p>
+                        <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="desc" cols="40" rows="10" required></textarea>
+                        <br>
+                        <button type="submit">Adicionar</button>
+                    </form>
+
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

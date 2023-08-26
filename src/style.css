@@ -72,6 +72,10 @@ input{
    box-shadow: 0px 0px 20px 1px rgba(128, 128, 128, 0.818);
 }
 
+button:hover{
+    cursor:pointer;
+}
+
 h1{
     color: #d75413;
 }
@@ -89,11 +93,21 @@ button{
     margin-top: 40px;
     width: 100%; 
     color: #f7ebe2;
+    box-shadow: 0px 0px 10px -4px black;
 }
 
 button:hover{
     background-color: #e38759;
+    transform: scale(1.01);
+    box-shadow: 0px 0px 15px -5px black;
 }
+
+button:active{
+    background-color: #e38759;
+    transform: scale(0.99);
+    box-shadow: 0px 0px 0px 0px black;
+}
+
 
 .links{
     margin-top: 40px;
