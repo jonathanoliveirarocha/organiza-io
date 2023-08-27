@@ -22,6 +22,18 @@ body, html{
     width: 60%;
     height: 100%;
 }
+::-webkit-scrollbar{
+    background-color: rgb(184, 187, 189);
+    width: 7px;
+    border: 1px solid back;
+    color: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #5a5959;
+    border-radius: 20px;
+    
+}
 
 #callToAction{
     width: 100%;

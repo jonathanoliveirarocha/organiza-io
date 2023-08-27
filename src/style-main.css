@@ -9,7 +9,7 @@
     width: 4px;
     border: 1px solid back;
     color: #1a1a1a;
-  }
+}
 
 ::-webkit-scrollbar-thumb{
     background-color: #60605f;
@@ -37,8 +37,24 @@ header{
     background-image: linear-gradient(to right, #1a1a1a, #7a7978);
 }
 
+.person span{
+    color: #dedada;
+    margin-right: 10px;
+    font-size: small;
+    user-select:none;
+}
+
+.person span:hover{
+    color:#e38759;
+}
+
+.person a{
+    text-decoration: none;
+}
+
+
 .logo{
-    width: 92%;
+    width: 88%;
     text-align: left;
 }
 
@@ -112,6 +128,12 @@ footer a{
 
 footer a:hover{
     color:#e38759;
+    transform: scale(1.05);
+}
+
+footer a:active{
+    color:#e38759;
+    transform: scale(0.98);
 }
 
 .content{
@@ -143,11 +165,11 @@ footer a:hover{
     width: 24px;
     height: 24px;
     right: 0%;
-   margin: 1.5px;
+    margin: 1.5px;
+    cursor: pointer;
 }
 
 .closeWindow{
-    cursor: pointer;
     width: 100%;
     text-align: right;
     border-radius: 8px;
@@ -168,6 +190,7 @@ button,#rem,select,#start,#end, #add, .appointmentItem:hover{
 }
 
 textarea{
+    resize: none;
     width: 94%;
     height: 70px;
     padding: 3%;
@@ -222,14 +245,33 @@ select{
     height: 90%;
  }
 
+ .descForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+ }
+
+ .descForm p{
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
 
 .addForm p{
     margin-top: 15px;
     margin-bottom: 5px;
 }
 
+.descForm h1{
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #d75413;
+}
+
 .addForm h1{
-    font-size: 25px;
+    font-size: 30px;
     margin-bottom: 30px;
     text-align: center;
     color: #d75413;
@@ -244,13 +286,11 @@ select{
 .edit{
     height: 13%;
     text-align: center;
-
 }
 
 .edit input{
     padding: 5px;
     width: 80px;
-    margin-left: 10px;
     border-radius: 7px;
     box-shadow: 0px 5px 20px -4px #484847;
     border-style: none;
@@ -258,30 +298,31 @@ select{
 
 }
 
-.edit #add{
+#add{
     background-color: #8FBC8F;
 }
-.edit #add:hover{
+#add:hover{
     box-shadow: 0px 5px 40px -4px #484847;
     background-color: hsl(146, 50%, 36%);
     transform: scale(1.04);
 }
 
-.edit #add:active{
+#add:active{
     box-shadow: 0px 0px 0px 0px black;
     transform: scale(0.95);
 }
 
-.edit #rem{
+#rem{
+    margin-top: 40px;
     background-color: #E9967A;
 }
-.edit #rem:hover{
+#rem:hover{
     box-shadow: 0px 5px 40px -4px #484847;
     background-color: #B22222;
     transform: scale(1.04);
 }
 
-.edit #rem:active{
+#rem:active{
     box-shadow: 0px 0px 0px 0px black;
     transform: scale(0.95);
 }
@@ -354,10 +395,11 @@ h1{
     border-radius: 3px;
     box-shadow: 0px 0px 10px -3px black;
     margin-bottom: 4px;
+    user-select:none;
 }
 
 .appointmentItem .hour p{
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .appointmentItem:hover{
@@ -372,11 +414,25 @@ h1{
 }
 
 .hour{
-    width: 10%;
+    width: 20%;
+}
+
+.hourEnd{
+    font-size: 11px;
+    width: 20%;
 }
 .appointmentDesc{
+
     text-align: center;
     justify-content: center;
-    width: 90%;
+    width: 60%;
+}
+
+.addForm{
+    display: none;
+}
+
+.descForm{
+    display: none;
 }
 

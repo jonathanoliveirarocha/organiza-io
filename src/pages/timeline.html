@@ -16,6 +16,9 @@
         <div class="logo">
             <a href="#"><h1>Organiza<span>.io</span></h1></a>
         </div>
+        <div class="person">
+            <a href="#"><span>Jonathan</span></a>
+        </div>
         <nav>
             <ul>
             <li>
@@ -29,88 +32,74 @@
       <div class="content">
         
         <div class="days">
-            <div class="monday">
+            <div class="Segunda-feira">
                 <div class="title">
-                    <h1>Segunda-feira</h1>
+                    <h1>Segunda-Feira</h1>
                 </div>
                 
-                <div class="appointments">
-                    <div class="appointmentItem">
-                        <div class="hour">
-                            <p>15h</p>
-                        </div>
-                        <div class="appointmentDesc">
-                            <p>Cabelo</p>
-                        </div>
-                    </div>
-                    <div class="appointmentItem">
-                        <div class="hour">
-                            <p>16h</p>
-                        </div>
-                        <div class="appointmentDesc">
-                            <p>Estudar</p>
-                        </div>
-                    </div>
+                <div class="appointments" id="appointmentsmonday">
+                    
+                    
                     
                 </div>
             </div>
 
-            <div class="tuesday ">
+            <div class="Terça-feira ">
                 <div class="title">
-                    <h1>Terça-feira</h1>
+                    <h1>Terça-Feira</h1>
                 </div>
                 
-                <div class="appointments">
+                <div class="appointments" id="appointmentstuesday">
                     
                 </div>
             </div>
 
-            <div class="wednesday ">
+            <div class="Quarta-feira ">
                 <div class="title">
-                    <h1>Quarta-feira</h1>
+                    <h1>Quarta-Feira</h1>
                 </div>
                 
-                <div class="appointments">
+                <div class="appointments" id="appointmentswednesday">
                     
                 </div>
             </div>
 
-            <div class="thursday ">
+            <div class="Quinta-feira ">
                 <div class="title">
-                    <h1>Quinta-feira</h1>
+                    <h1>Quinta-Feira</h1>
                 </div>
                 
-                <div class="appointments">
+                <div class="appointments" id="appointmentsthursday">
                     
                 </div>
             </div>
 
-            <div class="friday ">
+            <div class="Sexta-feira">
                 <div class="title">
-                    <h1>Sexta-feira</h1>
+                    <h1>Sexta-Feira</h1>
                 </div>
                 
-                <div class="appointments">
+                <div class="appointments" id="appointmentsfriday">
                     
                 </div>
             </div>
 
-            <div class="saturday ">
+            <div class="Sábado">
                 <div class="title">
                     <h1>Sábado</h1>
                 </div>
                 
-                <div class="appointments">
+                <div class="appointments" id="appointmentssaturday">
                     
                 </div>
             </div>
 
-            <div class="sunday ">
+            <div class="Domingo">
                 <div class="title">
                     <h1>Domingo</h1>
                 </div>
                 
-                <div class="appointments">
+                <div class="appointments" id="appointmentssunday">
                     
                 </div>
             </div>
@@ -121,7 +110,6 @@
 
       <div class="edit">
         <input id="add" type="button" value="Adicionar" onclick="add()">
-        <input id="rem" type="button" value="Remover">
       </div>
       
       <footer>
@@ -135,42 +123,81 @@
 
     <div class="efect">
         <div class="updateForm">
-            <div class="closeWindow" onclick="closeWindow()">
-                <img src="../images/closeWindow.png" alt="">
+            <div class="closeWindow">
+                <img src="../images/closeWindow.png" onclick="closeWindow()" alt="Botão de Fechar">
                 <!-- Used Image: https://br.freepik.com/icone/fechar_6276642#fromView=search&term=close+&page=1&position=63 -->
             </div>
             <div class="addForm">
                 <div class="formAddInputs">
-                    <form action="#" method="POST">
                         <h1>Adicionar</h1>
                         <p>Dia da Semana:</p>
-                        <select name="daySelection" id="daySelection" required>
+                        <select name="daySelection" id="daySelectionAdd" >
                             <option value="disabled" disabled selected>Selecione um Dia</option>
-                            <option value="monday">Segunda-feira</option>
-                            <option value="tuesday">Terça-feira</option>
-                            <option value="wednesday">Quarta-feira</option>
-                            <option value="thursday">Quinta-feira</option>
-                            <option value="friday">Sexta-feira</option>
-                            <option value="saturday">Sábado</option>
-                            <option value="sunday">Domingo</option>
+                            <option value="Segunda-Feira">Segunda-Feira</option>
+                            <option value="Terça-Feira">Terça-Feira</option>
+                            <option value="Quarta-Feira">Quarta-Feira</option>
+                            <option value="Quinta-Feira">Quinta-Feira</option>
+                            <option value="Sexta-Feira">Sexta-Feira</option>
+                            <option value="Sábado">Sábado</option>
+                            <option value="Domingo">Domingo</option>
                         </select>
     
                         <p>Início:</p>
-                        <input name="start" id="start" type="time" required>
+                        <input name="start" id="start" type="time">
     
                         <p>Término:</p>
-                        <input name="end" id="end" type="time" required>
+                        <input name="end" id="end" type="time" >
     
                         <p>Atividade:</p>
-                        <input name="activity" placeholder="Digite um Rótulo para a Atividade" type="text" required>
+                        <input name="activity" id="activity" placeholder="Digite um Rótulo para a Atividade" type="text" maxlength="11">
     
                         <p>Descrição:</p>
-                        <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="desc" cols="40" rows="10" required></textarea>
+                        <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="desc" cols="40" rows="10"></textarea>
                         <br>
-                        <button type="submit">Adicionar</button>
-                    </form>
+                        <button onclick="addItem()">Adicionar</button>
 
+                </div>
 
+                <div>
+
+                    
+                </div>
+                
+            </div>
+            <div class="descForm">
+                <div class="formAddInputs">
+                        <h1>Descrição/Editar</h1>
+                        <p>Dia da Semana:</p>
+                        <select name="daySelection" id="daySelectionDesc" >
+                            <option value="disabled" disabled selected>Selecione um Dia</option>
+                            <option value="Segunda-Feira">Segunda-Feira</option>
+                            <option value="Terça-Feira">Terça-Feira</option>
+                            <option value="Quarta-Feira">Quarta-Feira</option>
+                            <option value="Quinta-Feira">Quinta-Feira</option>
+                            <option value="Sexta-Feira">Sexta-Feira</option>
+                            <option value="Sábado">Sábado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
+    
+                        <p>Início:</p>
+                        <input name="start" id="startDesc" type="time" >
+    
+                        <p>Término:</p>
+                        <input name="end" id="endDesc" type="time" >
+    
+                        <p>Atividade:</p>
+                        <input name="activity" id="activityDesc" placeholder="Digite um Rótulo para a Atividade" type="text" maxlength="11">
+    
+                        <p>Descrição:</p>
+                        <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="descDesc" cols="40" rows="10"></textarea>
+                        <br>
+                        <input id="rem" type="button" value="Remover">
+
+                </div>
+
+                <div>
+
+                    
                 </div>
                 
             </div>
