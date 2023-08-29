@@ -41,9 +41,6 @@ function describe(id){
     document.querySelector(".descForm").style.display ="flex"
 
     descSelection(id)
-    
-
-    
 
 
 }
@@ -66,7 +63,7 @@ function addItem(){
     
 
     if(day=='disabled' || start==0 || end==0 || activity==0 || desc==0){
-        alert("Por favor Preencha Todos os Campos!")
+        msgDialog(false, "Por favor, preencha todos os campos!")
     }else{
 
         switch(day) {
@@ -94,10 +91,11 @@ function addItem(){
             default:
     
         }
+        msgDialog(true, "Adicionado Com Sucesso")
+        closeWindow()
     
     }
-        
-
+   
  
 }
 
@@ -116,7 +114,7 @@ function addArray(element, dayName, start, end, activity, desc){
     `</div>` +"\n"+
     `</div>`
     currentID++
-    alert("Acicionado Com Sucesso")
+    
 }
 
 
@@ -199,7 +197,25 @@ function descSelection(id){
         }
         
     }
-
+    
 
 
 }
+
+
+function closeMsg(){
+    document.querySelector(".status").style.display = "none"
+}
+
+function msgDialog(status, msg){
+    if(status){
+        document.querySelector(".msgDialog").style.color = "rgb(20, 161, 46)"
+        document.querySelector(".statusMsg").style.backgroundColor = "#afc8a0"
+    }else{
+        document.querySelector(".msgDialog").style.color = "rgb(161, 20, 20)"
+        document.querySelector(".statusMsg").style.backgroundColor = "#b67777"
+    }
+    document.querySelector(".msgDialog").innerHTML = `${msg}`
+    document.querySelector(".status").style.display = "flex"
+}
+

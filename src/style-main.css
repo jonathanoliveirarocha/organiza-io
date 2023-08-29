@@ -388,7 +388,6 @@ h1{
 }
 
 .appointmentItem{
-    background-color: #b09f6f;
     display: flex;
     height: 25px;
     align-items: center;
@@ -398,12 +397,40 @@ h1{
     user-select:none;
 }
 
+.monday .appointmentItem{
+    background-color: #b06f6f;
+}
+
+.tuesday .appointmentItem{
+    background-color: #b0976f;
+}
+
+.wednesday .appointmentItem{
+    background-color: #acac61;
+}
+
+.thursday .appointmentItem{
+    background-color: #7eaf67;
+}
+
+.friday .appointmentItem{
+    background-color: #679eaf;
+}
+
+.saturday .appointmentItem{
+    background-color: #8e98d5;
+}
+
+.sunday .appointmentItem{
+    background-color: rgb(173, 114, 227);
+}
+
+
 .appointmentItem .hour p{
     font-size: 11px;
 }
 
 .appointmentItem:hover{
-    background-color: #c09624;
     transform: scale(1.01);
     box-shadow: 0px 0px 10px 0px black;
 }
@@ -434,5 +461,44 @@ h1{
 
 .descForm{
     display: none;
+}
+
+.status{
+    width: 100%;
+    height: 14%;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    display: none;
+    justify-content: center;
+}
+
+.statusMsg{
+    width: 800px;
+    height: 70px;
+    border-radius: 8px;
+}
+
+.closeMsg{
+    border-radius: 8px;
+    text-align: right;
+}
+
+.closeMsg img{
+    width: 10px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.contentMsg{
+    width: 100%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.msgDialog{
+    margin-top: 7px;
 }
 
