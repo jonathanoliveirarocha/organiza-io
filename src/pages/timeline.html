@@ -60,7 +60,17 @@
                 </div>
                 
                 <div class="appointments" id="appointmentswednesday">
-                    
+                    <div class="appointmentItem" id="1" onclick="describe(id)">
+                        <div class="hour">
+                            <p>12:43</p>
+                        </div>
+                        <div class="appointmentDesc">
+                           <p>atividade</p>
+                        </div>
+                        <div class="hourEnd">
+                            <p>12:43</p>
+                        </div>
+                        </div>
                 </div>
             </div>
 
@@ -166,9 +176,9 @@
             </div>
             <div class="descForm">
                 <div class="formAddInputs">
-                        <h1>Descrição/Editar</h1>
+                        <h1>Descrição</h1>
                         <p>Dia da Semana:</p>
-                        <select name="daySelection" id="daySelectionDesc" >
+                        <select disabled name="daySelection" id="daySelectionDesc">
                             <option value="disabled" disabled selected>Selecione um Dia</option>
                             <option value="Segunda-Feira">Segunda-Feira</option>
                             <option value="Terça-Feira">Terça-Feira</option>
@@ -180,18 +190,18 @@
                         </select>
     
                         <p>Início:</p>
-                        <input name="start" id="startDesc" type="time" >
+                        <input name="start" id="startDesc" type="time" disabled>
     
                         <p>Término:</p>
-                        <input name="end" id="endDesc" type="time" >
+                        <input name="end" id="endDesc" type="time" disabled>
     
                         <p>Atividade:</p>
-                        <input name="activity" id="activityDesc" placeholder="Digite um Rótulo para a Atividade" type="text" maxlength="11">
+                        <input name="activity" id="activityDesc" placeholder="Digite um Rótulo para a Atividade" type="text" maxlength="11" disabled>
     
                         <p>Descrição:</p>
-                        <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="descDesc" cols="40" rows="10"></textarea>
+                        <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="descDesc" cols="40" rows="10" disabled></textarea>
                         <br>
-                        <input id="rem" type="button" value="Remover">
+                        <input id="rem" type="button" value="Remover" onclick="removeElement()">
 
                 </div>
 
@@ -208,6 +218,7 @@
             <div class="statusMsg">
                 <div class="closeMsg">
                     <img src="../images/closeWindow2.png" alt="Botão de Fechar" onclick="closeMsg()">
+                    <!-- Used Image: https://br.freepik.com/icone/perto_2976286#fromView=search&term=close+&page=1&position=0 -->
                 </div>
                 <div class="contentMsg">
                     <p class="msgDialog">msg</p>

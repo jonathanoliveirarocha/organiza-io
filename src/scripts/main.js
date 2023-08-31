@@ -6,6 +6,7 @@ var friday = []
 var saturday = []
 var sunday = []
 var currentID = 0
+var changeElement = 0
 
 
 function add(){
@@ -39,9 +40,8 @@ function describe(id){
     document.querySelector(".main").style.filter = "blur(5px)"
     document.querySelector(".efect").style.display ="flex"
     document.querySelector(".descForm").style.display ="flex"
-
     descSelection(id)
-
+    changeElement = id
 
 }
 
@@ -102,7 +102,7 @@ function addItem(){
 
 function addArray(element, dayName, start, end, activity, desc){
     dayName.push([currentID,start,end,activity, desc])
-    document.querySelector(`#appointments${element}`).innerHTML+=`<div class="appointmentItem" id=${currentID} onclick="describe(id)">`+"\n"+
+    document.querySelector(`#appointments${element}`).innerHTML+=`<div class="appointmentItem" id="${currentID}" onclick="describe(id)">`+"\n"+
     `<div class="hour">`+"\n"+
         `<p>${start}</p>` +"\n"+
     `</div>` +"\n"+
@@ -218,4 +218,112 @@ function msgDialog(status, msg){
     document.querySelector(".msgDialog").innerHTML = `${msg}`
     document.querySelector(".status").style.display = "flex"
 }
+
+function changeInput(id){
+    var select = document.querySelector('#daySelectionAdd')
+    var day = select.options[select.selectedIndex].value
+        
+    var start = document.querySelector('#start').value
+    var end = document.querySelector('#end').value
+    
+    var input = document.querySelector('#activity')
+    var activity = input.value
+
+    input = document.querySelector('#desc')
+    var desc = input.value
+
+    changeElement
+    
+    
+
+    if(day=='disabled' || start==0 || end==0 || activity==0 || desc==0){
+        msgDialog(false, "Por favor, preencha este campo!")
+    }else{
+        if(id=="startDesc"){
+            changeSelection(id)
+        }else if(id=="endDesc"){
+            changeSelection(id)
+        }else if(id=="activityDesc"){
+            changeSelection(id)
+        }else if(id=="descDesc"){
+            changeSelection(id)
+        }
+    }
+}
+
+
+function removeElement(){
+    var id = changeElement
+    var node = document.getElementById(changeElement)
+    if (node.parentNode) {
+        node.parentNode.removeChild(node);
+    }
+    msgDialog(true, "Compromisso Removido com Sucesso!")
+    closeWindow()
+
+    for(var x=0; x<monday.length;x++){
+        if(monday[x][0]==id){         
+            monday.splice(x, 1);  
+            return 0
+           
+        }
+        
+    }
+    for(var x=0; x<tuesday.length;x++){
+        if(tuesday[x][0]==id){
+            tuesday.splice(x, 1);
+            return 0
+        }
+        
+    }
+    for(var x=0; x<wednesday.length;x++){
+        if(wednesday[x][0]==id){
+            wednesday.splice(x, 1); 
+            return 0
+        }
+        
+    }
+    for(var x=0; x<thursday.length;x++){
+        if(thursday[x][0]==id){
+            thursday.splice(x, 1); 
+            return 0
+        }
+        
+    }
+    for(var x=0; x<friday.length;x++){
+        if(friday[x][0]==id){
+            friday.splice(x, 1); 
+            return 0
+        }
+        
+    }
+    for(var x=0; x<saturday.length;x++){
+        if(saturday[x][0]==id){
+            saturday.splice(x, 1); 
+            return 0
+        }
+        
+    }
+    for(var x=0; x<sunday.length;x++){
+        if(sunday[x][0]==id){
+            sunday.splice(x, 1); 
+            return 0
+        }
+        
+    }
+    
+
+}
+
+
+
+
+
+
+
+
+
+    
+    
+
 

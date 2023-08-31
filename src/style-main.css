@@ -59,7 +59,11 @@ header{
 }
 
 .logo a{
-    text-decoration: none;
+    text-decoration: none;    
+}
+
+.logo h1{
+   width: fit-content;
 }
 
 .logo h1:hover{
@@ -470,6 +474,7 @@ h1{
     text-align: center;
     align-items: center;
     display: none;
+    pointer-events: none;
     justify-content: center;
 }
 
@@ -477,6 +482,7 @@ h1{
     width: 800px;
     height: 70px;
     border-radius: 8px;
+    pointer-events:visible;
 }
 
 .closeMsg{
