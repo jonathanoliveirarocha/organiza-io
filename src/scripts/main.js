@@ -58,10 +58,6 @@ function addItem(){
     input = document.querySelector('#desc')
     var desc = input.value
 
-    
-    
-    
-
     if(day=='disabled' || start==0 || end==0 || activity==0 || desc==0){
         msgDialog(false, "Por favor, preencha todos os campos!")
     }else{
@@ -95,8 +91,6 @@ function addItem(){
         closeWindow()
     
     }
-   
- 
 }
 
 
@@ -197,9 +191,6 @@ function descSelection(id){
         }
         
     }
-    
-
-
 }
 
 
@@ -230,11 +221,7 @@ function changeInput(id){
     var activity = input.value
 
     input = document.querySelector('#desc')
-    var desc = input.value
-
-    changeElement
-    
-    
+    var desc = input.value    
 
     if(day=='disabled' || start==0 || end==0 || activity==0 || desc==0){
         msgDialog(false, "Por favor, preencha este campo!")
@@ -314,16 +301,3 @@ function removeElement(){
     
 
 }
-
-
-
-
-
-
-
-
-
-    
-    
-
-

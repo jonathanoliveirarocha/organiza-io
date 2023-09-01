@@ -4,53 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organiza.io</title>
-    <link rel="stylesheet" href="../style-main.css">
+    <link rel="stylesheet" href="../css/style-main.css">
     <script src="../scripts/main.js"></script>
 </head>
-<body>
-    
-    
-    
+<body>   
     <div class="main">
       <header>
-        <div class="logo">
-            <a href="#"><h1>Organiza<span>.io</span></h1></a>
-        </div>
-        <div class="person">
-            <a href="#"><span>Jonathan</span></a>
-        </div>
-        <nav>
-            <ul>
-            <li>
-                <form action="" method="POST">
+        <nav class="nav-items ">
+                <a href="#" class="to-left padding-large"><h1>Organiza<span>.io</span></h1></a>
+                <form action="" method="POST" class="to-right padding-large">
                     <button type="submit" class="logout">Sair</button>
                 </form>
-            </li>
-            </ul>
+                <a href="#" class="to-right padding-large"><span class="person">Jonathan</span></a>
+                
         </nav>
       </header>  
-      <div class="content">
-        
+      <div class="content">       
         <div class="days">
             <div class="monday">
                 <div class="title">
                     <h1>Segunda-Feira</h1>
                 </div>
-                
-                <div class="appointments" id="appointmentsmonday">
-                    
-                    
-                    
-                </div>
+                <div class="appointments" id="appointmentsmonday"></div>
             </div>
 
             <div class="tuesday">
                 <div class="title">
                     <h1>Terça-Feira</h1>
-                </div>
-                
-                <div class="appointments" id="appointmentstuesday">
-                    
+                </div>             
+                <div class="appointments" id="appointmentstuesday">   
                 </div>
             </div>
 
@@ -58,64 +40,37 @@
                 <div class="title">
                     <h1>Quarta-Feira</h1>
                 </div>
-                
-                <div class="appointments" id="appointmentswednesday">
-                    <div class="appointmentItem" id="1" onclick="describe(id)">
-                        <div class="hour">
-                            <p>12:43</p>
-                        </div>
-                        <div class="appointmentDesc">
-                           <p>atividade</p>
-                        </div>
-                        <div class="hourEnd">
-                            <p>12:43</p>
-                        </div>
-                        </div>
-                </div>
+                <div class="appointments" id="appointmentswednesday"></div>
             </div>
 
             <div class="thursday">
                 <div class="title">
                     <h1>Quinta-Feira</h1>
-                </div>
-                
-                <div class="appointments" id="appointmentsthursday">
-                    
-                </div>
+                </div>                
+                <div class="appointments" id="appointmentsthursday"></div>
             </div>
 
             <div class="friday">
                 <div class="title">
                     <h1>Sexta-Feira</h1>
                 </div>
-                
-                <div class="appointments" id="appointmentsfriday">
-                    
-                </div>
+                <div class="appointments" id="appointmentsfriday"></div>
             </div>
 
             <div class="saturday">
                 <div class="title">
                     <h1>Sábado</h1>
                 </div>
-                
-                <div class="appointments" id="appointmentssaturday">
-                    
-                </div>
+                <div class="appointments" id="appointmentssaturday"></div>
             </div>
 
             <div class="sunday">
                 <div class="title">
                     <h1>Domingo</h1>
-                </div>
-                
-                <div class="appointments" id="appointmentssunday">
-                    
-                </div>
+                </div>                
+                <div class="appointments" id="appointmentssunday"></div>
             </div>
-
-        </div>
-        
+        </div>   
       </div>
 
       <div class="edit">
@@ -124,11 +79,7 @@
       
       <footer>
         <a href="https://github.com/jonathanoliveirarocha" target="_blank">&copy Jonathan de Oliveira Rocha</a>
-
       </footer>
-      
-
-
     </div>
 
     <div class="efect">
@@ -151,29 +102,19 @@
                             <option value="Sábado">Sábado</option>
                             <option value="Domingo">Domingo</option>
                         </select>
-    
                         <p>Início:</p>
                         <input name="start" id="start" type="time">
-    
                         <p>Término:</p>
                         <input name="end" id="end" type="time" >
-    
                         <p>Atividade:</p>
                         <input name="activity" id="activity" placeholder="Digite um Rótulo para a Atividade" type="text" maxlength="11">
-    
                         <p>Descrição:</p>
                         <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="desc" cols="40" rows="10"></textarea>
                         <br>
                         <button onclick="addItem()">Adicionar</button>
-
                 </div>
-
-                <div>
-
-                    
-                </div>
-                
             </div>
+
             <div class="descForm">
                 <div class="formAddInputs">
                         <h1>Descrição</h1>
@@ -188,28 +129,17 @@
                             <option value="Sábado">Sábado</option>
                             <option value="Domingo">Domingo</option>
                         </select>
-    
                         <p>Início:</p>
                         <input name="start" id="startDesc" type="time" disabled>
-    
                         <p>Término:</p>
                         <input name="end" id="endDesc" type="time" disabled>
-    
                         <p>Atividade:</p>
                         <input name="activity" id="activityDesc" placeholder="Digite um Rótulo para a Atividade" type="text" maxlength="11" disabled>
-    
                         <p>Descrição:</p>
                         <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="descDesc" cols="40" rows="10" disabled></textarea>
                         <br>
                         <input id="rem" type="button" value="Remover" onclick="removeElement()">
-
-                </div>
-
-                <div>
-
-                    
-                </div>
-                
+                </div>             
             </div>
         </div>
     </div>
@@ -221,11 +151,9 @@
                     <!-- Used Image: https://br.freepik.com/icone/perto_2976286#fromView=search&term=close+&page=1&position=0 -->
                 </div>
                 <div class="contentMsg">
-                    <p class="msgDialog">msg</p>
+                    <p class="msgDialog">Msg</p>
                 </div>
-               
             </div>
     </div>
-
 </body>
 </html>

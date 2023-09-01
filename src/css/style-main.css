@@ -22,69 +22,79 @@ body, html{
     background-color: #f2f2f2;
 }
 
+.to-right{
+    float: right !important;
+}
+
+.to-left{
+    float: left !important;
+}
+
 .main{
     width: 100%;
     height: 100%;
+    position: absolute;
 }
 
 header{
+    top:0;
+    position: fixed;
+    display: block;
+    z-index: 1;
     width: 100%;
-    height: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    text-align: right;
+    height: 50px;
+    color: white;
     background-image: linear-gradient(to right, #1a1a1a, #7a7978);
 }
 
-.person span{
+header span{
+    color: #cf6f08;
+}
+
+header h1:hover{
+    color: #cf6f08;
+    font-size: 23px;
+}
+header h1 span:hover{
+    color: #d8d5d5;
+}
+
+header h1:active{
+    font-size: 19px;
+}
+
+.nav-items {
+    padding: 8px 16px;
+    width: auto;
+    border: none;
+}
+
+.padding-large {
+    padding: 4px 7px !important;
+}
+
+.person{
     color: #dedada;
-    margin-right: 10px;
     font-size: small;
     user-select:none;
 }
 
-.person span:hover{
+.person:hover{
     color:#e38759;
 }
 
-.person a{
+a{
     text-decoration: none;
+    color:white;
 }
 
-
-.logo{
-    width: 88%;
-    text-align: left;
+a:hover{
+    color:#e38759;
+    transform: scale(1.05);
 }
 
-.logo a{
-    text-decoration: none;    
-}
-
-.logo h1{
-   width: fit-content;
-}
-
-.logo h1:hover{
-    color: #cf6f08;
-    font-size: 23px;
-}
-.logo h1 span:hover{
-    color: #d8d5d5;
-}
-
-.logo h1:active{
-    font-size: 19px;
-}
-
-
-.logo h1{
-    color: #d8d5d5;
-}
-
-.logo span{
-    color: #cf6f08;
+a:active{
+    transform: scale(0.98);
 }
 
 .logout{
@@ -110,36 +120,6 @@ header{
     transform: scale(0.95);
 }
 
-ul{
-    list-style-type: none
-}
-
-footer{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 0;
-    width: 100%;
-    height: 3%; 
-    background-color: #7a7978;
-}
-
-footer a{
-    text-decoration: none;
-    color:white;
-}
-
-footer a:hover{
-    color:#e38759;
-    transform: scale(1.05);
-}
-
-footer a:active{
-    color:#e38759;
-    transform: scale(0.98);
-}
-
 .content{
     width: 100%;
     height: 79%;
@@ -150,9 +130,15 @@ footer a:active{
     align-items: center;
 }
 
-.main{
-    position: absolute;
-    /* filter: blur(5px); */
+footer{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    height: 3%; 
+    background-color: #7a7978;
 }
 
 
@@ -240,29 +226,16 @@ select{
     width: 100%;
 }
 
-
- .addForm{
+.descForm, .addForm{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 90%;
+    display: none;
  }
 
- .descForm{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 90%;
- }
-
- .descForm p{
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-.addForm p{
+.descForm p{
     margin-top: 15px;
     margin-bottom: 5px;
 }
@@ -272,6 +245,11 @@ select{
     margin-bottom: 30px;
     text-align: center;
     color: #d75413;
+}
+
+.addForm p{
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .addForm h1{
@@ -285,7 +263,6 @@ select{
     width: 40%;
     text-align: left;
 }
-
 
 .edit{
     height: 13%;
@@ -334,6 +311,7 @@ select{
 img{
     width: 100%;
 }
+
 .days{
     margin-top: 5%;
     border-radius: 8px;
@@ -349,37 +327,9 @@ img{
     border-top: none;
 }
 
-
 h1{
     font-size: 20px;
     color: rgb(230, 233, 235);
-}
-
-.appointments{
-    background-image: linear-gradient(to bottom,#A9A9A9,#C0C0C0,#D3D3D3, #DCDCDC);
-    height: 500px;
-    border: 1px solid;
-    border-right: none;
-    border-top: none;
-    border-bottom-style: none;
-    width: 170px;
-    padding: 2px;
-    overflow-y: hidden;
-}
-
-.appointments:hover{
-    overflow-y:scroll;
-}
-
-
-
-.sunday .appointments{
-    border-bottom-right-radius: 8px;
-}
-
-.monday .appointments{
-    border-left-style: none;
-    border-bottom-left-radius: 8px;
 }
 
 .monday .title{
@@ -399,6 +349,31 @@ h1{
     box-shadow: 0px 0px 10px -3px black;
     margin-bottom: 4px;
     user-select:none;
+}
+
+.appointments{
+    background-image: linear-gradient(to bottom,#A9A9A9,#C0C0C0,#D3D3D3, #DCDCDC);
+    height: 500px;
+    border: 1px solid;
+    border-right: none;
+    border-top: none;
+    border-bottom-style: none;
+    width: 170px;
+    padding: 2px;
+    overflow-y: hidden;
+}
+
+.appointments:hover{
+    overflow-y:scroll;
+}
+
+.sunday .appointments{
+    border-bottom-right-radius: 8px;
+}
+
+.monday .appointments{
+    border-left-style: none;
+    border-bottom-left-radius: 8px;
 }
 
 .monday .appointmentItem{
@@ -429,7 +404,6 @@ h1{
     background-color: rgb(173, 114, 227);
 }
 
-
 .appointmentItem .hour p{
     font-size: 11px;
 }
@@ -438,7 +412,6 @@ h1{
     transform: scale(1.01);
     box-shadow: 0px 0px 10px 0px black;
 }
-
 .appointmentItem:active{
     box-shadow: 0px 0px 0px 0px black;
     transform: scale(0.98);
@@ -453,18 +426,9 @@ h1{
     width: 20%;
 }
 .appointmentDesc{
-
     text-align: center;
     justify-content: center;
     width: 60%;
-}
-
-.addForm{
-    display: none;
-}
-
-.descForm{
-    display: none;
 }
 
 .status{
@@ -507,4 +471,3 @@ h1{
 .msgDialog{
     margin-top: 7px;
 }
-
