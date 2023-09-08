@@ -1,42 +1,35 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrar</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <div class="main">
+<link rel="stylesheet" href="/css/style.css">
+<div class="main">
         <div class="bannerContent">
             <div id="callToAction">
                 <h1>Organize suas ideias</h1>
                 <h2>Tudo em um só lugar</h2>
             </div>
-            <img width="100%" height="100%" src="./images/BannerImg.png" alt="BannerImg">
-            <!-- Used Image: https://www.pexels.com/pt-br/foto/livro-de-cor-cinza-padrao-perto-de-borracha-verde-159045/ -->
+            <img width="100%" height="100%" src="/images/BannerImg.png" alt="BannerImg">
+            <!-- Link da Imagem utilizada: https://www.pexels.com/pt-br/foto/livro-de-cor-cinza-padrao-perto-de-borracha-verde-159045/ -->
         </div>
 
         <div class="loginArea">
             <div class="content">
-                <h1 id="h1Login">Login</h1>
+                <h1 id="h1Login">Cadastro</h1>
                 <div class="void">
                     <div class="loginInputs">
                         <form action="#" method="POST">
+                            <p id="userLabel">Usuário:</p>
+                            <input id="userInput" type="text" name="user" placeholder="Digite seu Usuário" required>
                             <p id="emailLabel">E-mail:</p>
                             <input id="emailInput" type="email" name="email" placeholder="Digite seu E-mail" required>
                             <p id="passwordLabel">Senha:</p>
                             <input id="passwordInput" type="password" name="password" placeholder="Digite sua Senha" required>
-                            <button id="btnLogar" type="submit">Entrar</button>
+                            <p id="passwordLabe2">Confirme sua Senha:</p>
+                            <input id="passwordInput2" type="password" name="password2" placeholder="Confirme sua Senha" required>
+                            <button id="btnSignUp" type="submit">Cadastrar</button>
                         </form>
                     </div>
                 </div>
                 <div class="links">
-                    <a id="signup" href="./pages/signup.html">Cadastre-se</a>
+                    <a id="login" href="/">Já Possui uma conta? Entrar.</a>
                 </div>
             </div>
         </div>
     </div>
-    
-</body>
-</html>
