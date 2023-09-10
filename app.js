@@ -73,13 +73,27 @@ app.post('/cadastro', async (req, res)=>{
     
 })
 
-app.get('/home', loggedIn,  (req, res)=>{
-    res.render('index')
+async function getUsername(){
+    
+}
+
+app.get('/home', loggedIn, async (req, res)=>{
+    try {
+        const user = await User.findById(req.user);
+    
+        if (!user) {
+          return res.status(404).json({ message: 'Usuário não encontrado' });
+        }
+    
+        const username = user.username;
+        res.render('index', {username: username})
+      } catch (error) {
+        res.status(500).json({ error: 'Erro ao buscar o username do usuário' });
+      }
 })
 
 app.get("/sair", (req, res) => {
     req.logout((err) => {
-        console.log("Deslogado!")
         res.redirect("/")
     })
 })

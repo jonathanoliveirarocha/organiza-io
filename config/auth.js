@@ -14,7 +14,7 @@ module.exports = function(passport){
                 bcrypt.compare(password, usuario.password, (erro, logged)=>{
                     if(logged){
                         console.log("Logado!")
-                        return done(null, { id: 1, username: 'seu_usuario' });
+                        return done(null, usuario)
                     }else{
                         console.log("Errouuuu!")
                         return done(null, false, {message: 'Senha incorreta!'})
@@ -25,10 +25,14 @@ module.exports = function(passport){
       }))
 }
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
   
-passport.deserializeUser((id, done)=>{
-    done(null, { id: 1, username: 'seu_usuario' });
-})
+passport.deserializeUser(function(id, done) {
+    User.findById(id).then(document => {
+      done(null, document.id)
+    }).catch(error => {
+      console.error(error);
+    });
+});
