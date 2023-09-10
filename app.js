@@ -5,6 +5,7 @@ const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser');
 const db = require('./config/db')
 const User = require('./models/User');
+const Appointments = require('./models/Appointments');
 const bcrypt = require('bcryptjs')
 const passport = require('passport');
 const {loggedIn} = require('./helpers/loggedIn');
@@ -57,8 +58,14 @@ app.post('/cadastro', async (req, res)=>{
                 }else{
                     newUser.password = hash 
                     newUser.save().then(()=>{
-                        console.log('User created successfully!')
-                        res.redirect('/home')
+                        req.login(newUser, (err) => {
+                            if (err) {
+                              return res.status(500).send('Erro ao autenticar o usuário.');
+                            }
+                            res.redirect('/home')
+                            console.log('User created successfully!')
+                          });
+                             
                     }).catch((err)=>{
                         console.log('Error to create user!')
                         res.redirect('/cadastro')
@@ -73,9 +80,6 @@ app.post('/cadastro', async (req, res)=>{
     
 })
 
-async function getUsername(){
-    
-}
 
 app.get('/home', loggedIn, async (req, res)=>{
     try {
@@ -84,13 +88,15 @@ app.get('/home', loggedIn, async (req, res)=>{
         if (!user) {
           return res.status(404).json({ message: 'Usuário não encontrado' });
         }
-    
         const username = user.username;
+        
         res.render('index', {username: username})
       } catch (error) {
         res.status(500).json({ error: 'Erro ao buscar o username do usuário' });
       }
 })
+
+
 
 app.get("/sair", (req, res) => {
     req.logout((err) => {

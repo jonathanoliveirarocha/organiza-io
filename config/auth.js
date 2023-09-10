@@ -6,17 +6,17 @@ const User = require('../models/User');
 
 module.exports = function(passport){
     passport.use(new localStrategy({usernameField: 'email', passwordField: 'password'}, (email, password, done)=>{
-        User.findOne({email: email}).then((usuario)=>{
-            if(!usuario){
+        User.findOne({email: email}).then((user)=>{
+            if(!user){
                 console.log("Esta conta não existe!")
                 return done(null, false, {message: 'Esta conta não existe!'})
             }else{
-                bcrypt.compare(password, usuario.password, (erro, logged)=>{
+                bcrypt.compare(password, user.password, (erro, logged)=>{
                     if(logged){
-                        console.log("Logado!")
-                        return done(null, usuario)
+                        console.log('Logged In!')
+                        return done(null, user)
                     }else{
-                        console.log("Errouuuu!")
+                        console.log('Senha incorreta!')
                         return done(null, false, {message: 'Senha incorreta!'})
                     }
                 })
@@ -30,8 +30,8 @@ passport.serializeUser(function(user, done) {
   });
   
 passport.deserializeUser(function(id, done) {
-    User.findById(id).then(document => {
-      done(null, document.id)
+    User.findById(id).then(user => {
+      done(null, user.id)
     }).catch(error => {
       console.error(error);
     });
