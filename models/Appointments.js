@@ -8,7 +8,7 @@ const appointmentsSchema = new mongoose.Schema({
   tuesday: {
     type: Array,
   },
-  Wednesday: {
+  wednesday: {
     type: Array,
   },
   thursday: {

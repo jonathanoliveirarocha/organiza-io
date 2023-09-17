@@ -12,6 +12,7 @@ const {loggedIn} = require('./helpers/loggedIn');
 require('./config/auth')(passport);
 const session = require('express-session');
 
+
 // Config
     // Views
     app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
@@ -65,7 +66,17 @@ app.post('/cadastro', async (req, res)=>{
                             res.redirect('/home')
                             console.log('User created successfully!')
                           });
-                             
+                          const newAppointment = new Appointments({
+                            user: req.user, 
+                          });
+                        
+                          newAppointment.save()
+                          .then(savedDocument => {
+                            console.log('Lista criada para usuário');
+                          })
+                          .catch(err => {
+                            console.error(err);
+                          });
                     }).catch((err)=>{
                         console.log('Error to create user!')
                         res.redirect('/cadastro')
@@ -89,19 +100,188 @@ app.get('/home', loggedIn, async (req, res)=>{
           return res.status(404).json({ message: 'Usuário não encontrado' });
         }
         const username = user.username;
+
+        Appointments.findOne({user: req.user}).lean().then((appoints)=>{
+            if(appoints){
+              function ordHour(a, b) {
+                const ha = a[0];
+                const hb = b[0]; 
+                return ha.localeCompare(hb);
+              }
+              
+          
+                res.render('index', {username: username, 
+                  monday:appoints.monday.sort(ordHour),
+                  tuesday:appoints.tuesday.sort(ordHour),
+                  wednesday:appoints.wednesday.sort(ordHour),
+                  thursday:appoints.thursday.sort(ordHour),
+                  friday:appoints.friday.sort(ordHour),
+                  saturday:appoints.saturday.sort(ordHour),
+                  sunday:appoints.sunday.sort(ordHour),
+                })
+            }else{
+                console.log('Erro')
+            }
+        }).catch((err)=>{
+            console.log('Erro')
+        })
+
         
-        res.render('index', {username: username})
+        
       } catch (error) {
         res.status(500).json({ error: 'Erro ao buscar o username do usuário' });
       }
 })
 
 
+app.post("/adicionar", (req, res) => {
+
+    switch(req.body.daySelection) {
+        case 'Segunda-Feira':
+            Appointments.findOneAndUpdate(
+                {user: req.user}, 
+                { $push: { monday: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
+              )
+                .then((documentoAtualizado) => {
+                  if (documentoAtualizado) {
+               
+                    res.redirect('/home')
+                  } else {
+                    console.log('Documento não encontrado');
+                  }
+                })
+                .catch((error) => {
+                  console.error('Erro ao atualizar o array:', error);
+                });                
+            break
+        case 'Terça-Feira':
+            Appointments.findOneAndUpdate(
+                {user: req.user}, 
+                { $push: { tuesday: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
+              )
+                .then((documentoAtualizado) => {
+                  if (documentoAtualizado) {
+                   
+                    res.redirect('/home')
+                  } else {
+                    console.log('Documento não encontrado');
+                  }
+                })
+                .catch((error) => {
+                  console.error('Erro ao atualizar o array:', error);
+                }); 
+            break
+        case 'Quarta-Feira':
+            Appointments.findOneAndUpdate(
+                {user: req.user}, 
+                { $push: { wednesday: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
+              )
+                .then((documentoAtualizado) => {
+                  if (documentoAtualizado) {
+                  
+                    res.redirect('/home')
+                  } else {
+                    console.log('Documento não encontrado');
+                  }
+                })
+                .catch((error) => {
+                  console.error('Erro ao atualizar o array:', error);
+                }); 
+            break
+        case 'Quinta-Feira':
+            Appointments.findOneAndUpdate(
+                {user: req.user}, 
+                { $push: { thursday: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
+              )
+                .then((documentoAtualizado) => {
+                  if (documentoAtualizado) {
+                   
+                    res.redirect('/home')
+                  } else {
+                    console.log('Documento não encontrado');
+                  }
+                })
+                .catch((error) => {
+                  console.error('Erro ao atualizar o array:', error);
+                }); 
+            break
+        case 'Sexta-Feira':
+            Appointments.findOneAndUpdate(
+                {user: req.user}, 
+                { $push: { friday: [req.body.start, req.body.end, req.body.activity, req.body.desc]  } }, 
+              )
+                .then((documentoAtualizado) => {
+                  if (documentoAtualizado) {
+                  
+                    res.redirect('/home')
+                  } else {
+                    console.log('Documento não encontrado');
+                  }
+                })
+                .catch((error) => {
+                  console.error('Erro ao atualizar o array:', error);
+                }); 
+            break
+        case 'Sábado':
+            Appointments.findOneAndUpdate(
+                {user: req.user}, 
+                { $push: { saturday: [req.body.start, req.body.end, req.body.activity, req.body.desc]  } }, 
+              )
+                .then((documentoAtualizado) => {
+                  if (documentoAtualizado) {
+                   
+                    res.redirect('/home')
+                  } else {
+                    console.log('Documento não encontrado');
+                  }
+                })
+                .catch((error) => {
+                  console.error('Erro ao atualizar o array:', error);
+                }); 
+            break
+        case 'Domingo':
+            Appointments.findOneAndUpdate(
+                {user: req.user}, 
+                { $push: { sunday: [req.body.start, req.body.end, req.body.activity, req.body.desc]  } }, 
+              )
+                .then((documentoAtualizado) => {
+                  if (documentoAtualizado) {
+                   
+                    res.redirect('/home')
+                  } else {
+                    console.log('Documento não encontrado');
+                  }
+                })
+                .catch((error) => {
+                  console.error('Erro ao atualizar o array:', error);
+                }); 
+            break
+        default:
+
+    }
+})
+
 
 app.get("/sair", (req, res) => {
     req.logout((err) => {
         res.redirect("/")
     })
+})
+
+app.get("/removerElemento/:day/:index", async (req, res) => {
+  await Appointments.updateOne(
+    { user: req.user },
+    {
+      $unset: { [`${req.params.day}.${req.params.index}`]: null },
+    }
+  );
+  const result = await Appointments.updateOne(
+    { user: req.user },
+    {
+      $pull: { [`${req.params.day}`]: null },
+    }
+  );
+  res.redirect("/home")
 })
 
 
