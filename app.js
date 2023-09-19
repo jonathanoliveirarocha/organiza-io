@@ -11,6 +11,7 @@ const passport = require('passport');
 const {loggedIn} = require('./helpers/loggedIn');
 require('./config/auth')(passport);
 const session = require('express-session');
+const flash = require('connect-flash');
 
 
 // Config
@@ -32,6 +33,14 @@ const session = require('express-session');
     app.use(passport.initialize());
     app.use(passport.session());    
 
+    //flash
+    app.use(flash());
+    app.use((req, res, next)=>{
+      res.locals.success_msg = req.flash('success_msg')
+      res.locals.error_msg = req.flash('error_msg')
+      res.locals.user = req.user || null
+      next()
+    })
 
 app.get('/', (req, res)=>{
     res.render('auth/login')
@@ -144,7 +153,7 @@ app.post("/adicionar", (req, res) => {
               )
                 .then((documentoAtualizado) => {
                   if (documentoAtualizado) {
-               
+                    req.flash('success_msg', 'Adicionado com sucesso!')
                     res.redirect('/home')
                   } else {
                     console.log('Documento não encontrado');
@@ -161,7 +170,7 @@ app.post("/adicionar", (req, res) => {
               )
                 .then((documentoAtualizado) => {
                   if (documentoAtualizado) {
-                   
+                    req.flash('success_msg', 'Adicionado com sucesso!')
                     res.redirect('/home')
                   } else {
                     console.log('Documento não encontrado');
@@ -178,7 +187,7 @@ app.post("/adicionar", (req, res) => {
               )
                 .then((documentoAtualizado) => {
                   if (documentoAtualizado) {
-                  
+                    req.flash('success_msg', 'Adicionado com sucesso!')
                     res.redirect('/home')
                   } else {
                     console.log('Documento não encontrado');
@@ -195,7 +204,7 @@ app.post("/adicionar", (req, res) => {
               )
                 .then((documentoAtualizado) => {
                   if (documentoAtualizado) {
-                   
+                    req.flash('success_msg', 'Adicionado com sucesso!')
                     res.redirect('/home')
                   } else {
                     console.log('Documento não encontrado');
@@ -212,7 +221,7 @@ app.post("/adicionar", (req, res) => {
               )
                 .then((documentoAtualizado) => {
                   if (documentoAtualizado) {
-                  
+                    req.flash('success_msg', 'Adicionado com sucesso!')
                     res.redirect('/home')
                   } else {
                     console.log('Documento não encontrado');
@@ -229,7 +238,7 @@ app.post("/adicionar", (req, res) => {
               )
                 .then((documentoAtualizado) => {
                   if (documentoAtualizado) {
-                   
+                    req.flash('success_msg', 'Adicionado com sucesso!')
                     res.redirect('/home')
                   } else {
                     console.log('Documento não encontrado');
@@ -246,7 +255,7 @@ app.post("/adicionar", (req, res) => {
               )
                 .then((documentoAtualizado) => {
                   if (documentoAtualizado) {
-                   
+                    req.flash('success_msg', 'Adicionado com sucesso!')
                     res.redirect('/home')
                   } else {
                     console.log('Documento não encontrado');
@@ -281,6 +290,7 @@ app.get("/removerElemento/:day/:index", async (req, res) => {
       $pull: { [`${req.params.day}`]: null },
     }
   );
+  req.flash('success_msg', 'Removido com sucesso!')
   res.redirect("/home")
 })
 

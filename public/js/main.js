@@ -46,17 +46,17 @@ function closeMsg(){
     document.querySelector(".status").style.display = "none"
 }
 
-function msgDialog(status, msg){
-    if(status){
-        document.querySelector(".msgDialog").style.color = "rgb(20, 161, 46)"
-        document.querySelector(".statusMsg").style.backgroundColor = "#afc8a0"
-    }else{
-        document.querySelector(".msgDialog").style.color = "rgb(161, 20, 20)"
-        document.querySelector(".statusMsg").style.backgroundColor = "#b67777"
-    }
-    document.querySelector(".msgDialog").innerHTML = `${msg}`
-    document.querySelector(".status").style.display = "flex"
-}
+// function msgDialog(status, msg){
+//     if(status){
+//         document.querySelector(".msgDialog").style.color = "rgb(20, 161, 46)"
+//         document.querySelector(".statusMsg").style.backgroundColor = "#afc8a0"
+//     }else{
+//         document.querySelector(".msgDialog").style.color = "rgb(161, 20, 20)"
+//         document.querySelector(".statusMsg").style.backgroundColor = "#b67777"
+//     }
+//     document.querySelector(".msgDialog").innerHTML = `${msg}`
+//     document.querySelector(".status").style.display = "flex"
+// }
 
 
 function convertToEnglish(day){

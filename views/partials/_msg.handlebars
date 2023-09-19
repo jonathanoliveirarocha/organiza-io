@@ -1,0 +1,24 @@
+{{#if success_msg}}
+    <div class="statusMsg success">
+        <div class="closeMsg">
+            <img src="/images/closeWindow2.png" alt="Botão de Fechar" onclick="closeMsg()">
+            <!-- Used Image: https://br.freepik.com/icone/perto_2976286#fromView=search&term=close+&page=1&position=0 -->
+        </div>
+        <div class="contentMsg">
+            <p class="msgDialog success">{{success_msg}}</p>
+        </div>
+    </div>
+{{/if}}
+{{#if error_msg}}
+    <div class="statusMsg danger">
+        <div class="closeMsg">
+            <img src="/images/closeWindow2.png" alt="Botão de Fechar" onclick="closeMsg()">
+            <!-- Used Image: https://br.freepik.com/icone/perto_2976286#fromView=search&term=close+&page=1&position=0 -->
+        </div>
+        <div class="contentMsg">
+            <p class="msgDialog danger">{{error_msg}}</p>
+        </div>
+    </div>
+{{/if}}
+
+

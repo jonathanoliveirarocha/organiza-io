@@ -38,7 +38,6 @@ body, html{
 
 header{
     top:0;
-    position: fixed;
     display: block;
     z-index: 1;
     width: 100%;
@@ -431,43 +430,3 @@ h1{
     width: 60%;
 }
 
-.status{
-    width: 100%;
-    height: 14%;
-    position: relative;
-    text-align: center;
-    align-items: center;
-    display: none;
-    pointer-events: none;
-    justify-content: center;
-}
-
-.statusMsg{
-    width: 800px;
-    height: 70px;
-    border-radius: 8px;
-    pointer-events:visible;
-}
-
-.closeMsg{
-    border-radius: 8px;
-    text-align: right;
-}
-
-.closeMsg img{
-    width: 10px;
-    margin-right: 4px;
-    cursor: pointer;
-}
-
-.contentMsg{
-    width: 100%;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.msgDialog{
-    margin-top: 7px;
-}
