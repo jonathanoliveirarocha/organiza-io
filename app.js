@@ -38,6 +38,7 @@ const flash = require('connect-flash');
     app.use((req, res, next)=>{
       res.locals.success_msg = req.flash('success_msg')
       res.locals.error_msg = req.flash('error_msg')
+      res.locals.error = req.flash('error')
       res.locals.user = req.user || null
       next()
     })
@@ -45,58 +46,79 @@ const flash = require('connect-flash');
 app.get('/', (req, res)=>{
     res.render('auth/login')
 })
-app.post('/',
+app.post('/',(req, res, next)=>{
     passport.authenticate('local', {
-    successRedirect: '/home',
-    failureRedirect: '/',
-  })
-);
+      successRedirect: '/home',       
+      failureRedirect: '/',
+      failureFlash: true
+    })(req, res, next)
+  });
 
 app.get('/cadastro', (req, res)=>{
     res.render('auth/signin')
 })
 
 app.post('/cadastro', async (req, res)=>{
-    try {
-        const { username, email, password } = req.body;
-        const newUser = new User({ username, email, password });
-        bcrypt.genSalt(10, (err, salt)=>{
-            bcrypt.hash(newUser.password, salt, (err,hash)=>{
-                if(err){
-                    console.log('Error to generate hash!')
-                    res.redirect('/cadastro')
-                }else{
-                    newUser.password = hash 
-                    newUser.save().then(()=>{
-                        req.login(newUser, (err) => {
-                            if (err) {
-                              return res.status(500).send('Erro ao autenticar o usuário.');
-                            }
-                            res.redirect('/home')
-                            console.log('User created successfully!')
-                          });
-                          const newAppointment = new Appointments({
-                            user: req.user, 
-                          });
-                        
-                          newAppointment.save()
-                          .then(savedDocument => {
-                            console.log('Lista criada para usuário');
-                          })
-                          .catch(err => {
-                            console.error(err);
-                          });
-                    }).catch((err)=>{
-                        console.log('Error to create user!')
-                        res.redirect('/cadastro')
-                    })
-                }
-            })
-        })
-    
-      } catch (err) {
-        res.status(500).json({ error: `try again!` });
-      }
+  var erros = []
+    if(!req.body.username || typeof req.body.username == undefined || !req.body.username == null){
+        erros.push({texto: 'Nome inválido!'})
+    }
+    if(!req.body.email || typeof req.body.email == undefined || !req.body.email == null){
+        erros.push({texto:'E-mail inválido!'})
+    }
+    if (!req.body.password || typeof req.body.password == undefined || !req.body.password == null){
+        erros.push({texto:'Senha inválido!'})
+    }
+    if (req.body.password.length < 8){
+        erros.push({texto:'Senha muito curta!'})
+    }
+    if (req.body.password.length != req.body.password2.length){
+        erros.push({texto:'As senhas não coincidem!'})
+    }
+    if(erros.length>0){
+        res.render('signin', {error: erros})
+    }else{
+      try {
+          const { username, email, password } = req.body;
+          const newUser = new User({ username, email, password });
+          bcrypt.genSalt(10, (err, salt)=>{
+              bcrypt.hash(newUser.password, salt, (err,hash)=>{
+                  if(err){
+                      console.log('Error to generate hash!')
+                      res.redirect('/cadastro')
+                  }else{
+                      newUser.password = hash 
+                      newUser.save().then(()=>{
+                          req.login(newUser, (err) => {
+                              if (err) {
+                                return res.status(500).send('Erro ao autenticar o usuário.');
+                              }
+                              res.redirect('/home')
+                              console.log('User created successfully!')
+                            });
+                            const newAppointment = new Appointments({
+                              user: req.user, 
+                            });
+                          
+                            newAppointment.save()
+                            .then(savedDocument => {
+                              console.log('Lista criada para usuário');
+                            })
+                            .catch(err => {
+                              console.error(err);
+                            });
+                      }).catch((err)=>{
+                          console.log('Error to create user!')
+                          res.redirect('/cadastro')
+                      })
+                  }
+              })
+          })
+      
+        } catch (err) {
+          res.status(500).json({ error: `try again!` });
+        }
+    }
     
 })
 
