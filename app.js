@@ -167,130 +167,31 @@ app.get('/home', loggedIn, async (req, res)=>{
 
 
 app.post("/adicionar", (req, res) => {
+    var days=[['monday', 'Segunda-Feira'], ['tuesday', 'Terça-Feira'], ['wednesday', 'Quarta-Feira'], ['thursday','Quinta-Feira'],
+            ['friday','Sexta-Feira'], ['saturday', 'Sábado'], ['sunday', 'Domingo']]
+    var dayEnglish;
+    for(var i=0;i<7;i++){
+      if(req.body.daySelection==days[i][1]){
+        dayEnglish=days[i][0]
+        break
+      }
+    }  
 
-    switch(req.body.daySelection) {
-        case 'Segunda-Feira':
-            Appointments.findOneAndUpdate(
-                {user: req.user}, 
-                { $push: { monday: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
-              )
-                .then((documentoAtualizado) => {
-                  if (documentoAtualizado) {
-                    req.flash('success_msg', 'Adicionado com sucesso!')
-                    res.redirect('/home')
-                  } else {
-                    console.log('Documento não encontrado');
-                  }
-                })
-                .catch((error) => {
-                  console.error('Erro ao atualizar o array:', error);
-                });                
-            break
-        case 'Terça-Feira':
-            Appointments.findOneAndUpdate(
-                {user: req.user}, 
-                { $push: { tuesday: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
-              )
-                .then((documentoAtualizado) => {
-                  if (documentoAtualizado) {
-                    req.flash('success_msg', 'Adicionado com sucesso!')
-                    res.redirect('/home')
-                  } else {
-                    console.log('Documento não encontrado');
-                  }
-                })
-                .catch((error) => {
-                  console.error('Erro ao atualizar o array:', error);
-                }); 
-            break
-        case 'Quarta-Feira':
-            Appointments.findOneAndUpdate(
-                {user: req.user}, 
-                { $push: { wednesday: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
-              )
-                .then((documentoAtualizado) => {
-                  if (documentoAtualizado) {
-                    req.flash('success_msg', 'Adicionado com sucesso!')
-                    res.redirect('/home')
-                  } else {
-                    console.log('Documento não encontrado');
-                  }
-                })
-                .catch((error) => {
-                  console.error('Erro ao atualizar o array:', error);
-                }); 
-            break
-        case 'Quinta-Feira':
-            Appointments.findOneAndUpdate(
-                {user: req.user}, 
-                { $push: { thursday: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
-              )
-                .then((documentoAtualizado) => {
-                  if (documentoAtualizado) {
-                    req.flash('success_msg', 'Adicionado com sucesso!')
-                    res.redirect('/home')
-                  } else {
-                    console.log('Documento não encontrado');
-                  }
-                })
-                .catch((error) => {
-                  console.error('Erro ao atualizar o array:', error);
-                }); 
-            break
-        case 'Sexta-Feira':
-            Appointments.findOneAndUpdate(
-                {user: req.user}, 
-                { $push: { friday: [req.body.start, req.body.end, req.body.activity, req.body.desc]  } }, 
-              )
-                .then((documentoAtualizado) => {
-                  if (documentoAtualizado) {
-                    req.flash('success_msg', 'Adicionado com sucesso!')
-                    res.redirect('/home')
-                  } else {
-                    console.log('Documento não encontrado');
-                  }
-                })
-                .catch((error) => {
-                  console.error('Erro ao atualizar o array:', error);
-                }); 
-            break
-        case 'Sábado':
-            Appointments.findOneAndUpdate(
-                {user: req.user}, 
-                { $push: { saturday: [req.body.start, req.body.end, req.body.activity, req.body.desc]  } }, 
-              )
-                .then((documentoAtualizado) => {
-                  if (documentoAtualizado) {
-                    req.flash('success_msg', 'Adicionado com sucesso!')
-                    res.redirect('/home')
-                  } else {
-                    console.log('Documento não encontrado');
-                  }
-                })
-                .catch((error) => {
-                  console.error('Erro ao atualizar o array:', error);
-                }); 
-            break
-        case 'Domingo':
-            Appointments.findOneAndUpdate(
-                {user: req.user}, 
-                { $push: { sunday: [req.body.start, req.body.end, req.body.activity, req.body.desc]  } }, 
-              )
-                .then((documentoAtualizado) => {
-                  if (documentoAtualizado) {
-                    req.flash('success_msg', 'Adicionado com sucesso!')
-                    res.redirect('/home')
-                  } else {
-                    console.log('Documento não encontrado');
-                  }
-                })
-                .catch((error) => {
-                  console.error('Erro ao atualizar o array:', error);
-                }); 
-            break
-        default:
-
-    }
+    Appointments.findOneAndUpdate(
+      {user: req.user}, 
+      { $push: { [`${dayEnglish}`]: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
+    ).then((document) => {
+      if (document) {
+        req.flash('success_msg', 'Adicionado com sucesso!')
+        res.redirect('/home')
+      }else{
+        req.flash('error_msg', 'Erro ao adicionar compromisso!')
+        res.redirect('/home')
+      }
+      }).catch((error) => {
+        req.flash('error_msg', 'Erro ao adicionar compromisso!')
+        res.redirect('/home')
+      });   
 })
 
 
