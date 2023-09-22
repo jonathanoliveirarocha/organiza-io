@@ -12,6 +12,7 @@ const {loggedIn} = require('./helpers/loggedIn');
 require('./config/auth')(passport);
 const session = require('express-session');
 const flash = require('connect-flash');
+const e = require('connect-flash');
 
 
 // Config
@@ -84,17 +85,17 @@ app.post('/cadastro', async (req, res)=>{
           bcrypt.genSalt(10, (err, salt)=>{
               bcrypt.hash(newUser.password, salt, (err,hash)=>{
                   if(err){
-                      console.log('Error to generate hash!')
+                      req.flash('error_msg', 'Erro ao cadastrar usuário!')
                       res.redirect('/cadastro')
                   }else{
                       newUser.password = hash 
                       newUser.save().then(()=>{
                           req.login(newUser, (err) => {
                               if (err) {
-                                return res.status(500).send('Erro ao autenticar o usuário.');
+                                req.flash('error_msg', 'Erro ao autenticar usuário!')
+                                res.redirect('/')
                               }
                               res.redirect('/home')
-                              console.log('User created successfully!')
                             });
                             const newAppointment = new Appointments({
                               user: req.user, 
@@ -102,13 +103,13 @@ app.post('/cadastro', async (req, res)=>{
                           
                             newAppointment.save()
                             .then(savedDocument => {
-                              console.log('Lista criada para usuário');
+                              console.log('List created for user!');
                             })
                             .catch(err => {
                               console.error(err);
                             });
                       }).catch((err)=>{
-                          console.log('Error to create user!')
+                          req.flash('error_msg', 'Erro ao cadastrar usuário!')
                           res.redirect('/cadastro')
                       })
                   }
@@ -116,13 +117,11 @@ app.post('/cadastro', async (req, res)=>{
           })
       
         } catch (err) {
-          res.status(500).json({ error: `try again!` });
+          req.flash('error_msg', 'Erro ao cadastrar usuário!')
+          res.redirect('/cadastro')
         }
 
-      }
-      
-
-    
+      } 
 })
 
 
@@ -131,7 +130,8 @@ app.get('/home', loggedIn, async (req, res)=>{
         const user = await User.findById(req.user);
     
         if (!user) {
-          return res.status(404).json({ message: 'Usuário não encontrado' });
+          req.flash('error_msg', 'Usuário não encontrado!')
+          res.redirect('/')
         }
         const username = user.username;
 
@@ -142,8 +142,6 @@ app.get('/home', loggedIn, async (req, res)=>{
                 const hb = b[0]; 
                 return ha.localeCompare(hb);
               }
-              
-          
                 res.render('index', {username: username, 
                   monday:appoints.monday.sort(ordHour),
                   tuesday:appoints.tuesday.sort(ordHour),
@@ -154,21 +152,22 @@ app.get('/home', loggedIn, async (req, res)=>{
                   sunday:appoints.sunday.sort(ordHour),
                 })
             }else{
-                console.log('Erro')
+              req.flash('error_msg', 'Erro ao carregar dados!')
+              res.redirect('/')
             }
         }).catch((err)=>{
-            console.log('Erro')
-        })
-
-        
-        
+          req.flash('error_msg', 'Erro ao carregar página!')
+          res.redirect('/')
+        })  
       } catch (error) {
-        res.status(500).json({ error: 'Erro ao buscar o username do usuário' });
+          req.flash('error_msg', 'Erro ao carregar página!')
+          res.redirect('/')
       }
 })
 
 
 app.post("/adicionar", (req, res) => {
+
     switch(req.body.daySelection) {
         case 'Segunda-Feira':
             Appointments.findOneAndUpdate(
