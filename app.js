@@ -14,7 +14,6 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const e = require('connect-flash');
 
-
 // Config
     // Views
     app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
@@ -44,35 +43,41 @@ const e = require('connect-flash');
       next()
     })
 
+
+// Login routes
 app.get('/', (req, res)=>{
     res.render('auth/login')
 })
+
 app.post('/',(req, res, next)=>{
     passport.authenticate('local', {
       successRedirect: '/home',       
       failureRedirect: '/',
       failureFlash: true
     })(req, res, next)
-  });
+});
 
+
+// Registration routes
 app.get('/cadastro', (req, res)=>{
     res.render('auth/signin')
 })
 
 app.post('/cadastro', async (req, res)=>{
-      const { username, email, password,password1 } = req.body;
+      // Checking for errors
+      const { username, email, password, password2 } = req.body;
       const existingUser = await User.findOne({ email });
       var error=[]
-      if(username=='' || email=='' || password=='' || password1==''){
+      if(username=='' || email=='' || password=='' || password2==''){
         error.push("Por favor, preencha todos os campos!")
       }
       if(existingUser){
         error.push("Este E-mail já está sendo utilizado!")
       }
-      if(password<8){
+      if(8>password.length){
         error.push("A senha deve conter pelo menos 8 caracteres!")
       }
-      if(password!=password1){
+      if(password!=password2){
         error.push("As senhas não conferem!")
       }
       if(error.length>0){
@@ -80,6 +85,7 @@ app.post('/cadastro', async (req, res)=>{
         res.redirect('/cadastro')
       }else{
         try {
+          // Saving user
           const { username, email, password } = req.body;
           const newUser = new User({ username, email, password });
           bcrypt.genSalt(10, (err, salt)=>{
@@ -115,7 +121,6 @@ app.post('/cadastro', async (req, res)=>{
                   }
               })
           })
-      
         } catch (err) {
           req.flash('error_msg', 'Erro ao cadastrar usuário!')
           res.redirect('/cadastro')
@@ -125,16 +130,17 @@ app.post('/cadastro', async (req, res)=>{
 })
 
 
+// Main page
 app.get('/home', loggedIn, async (req, res)=>{
     try {
         const user = await User.findById(req.user);
-    
         if (!user) {
           req.flash('error_msg', 'Usuário não encontrado!')
           res.redirect('/')
         }
-        const username = user.username;
 
+        // Loading content
+        const username = user.username;
         Appointments.findOne({user: req.user}).lean().then((appoints)=>{
             if(appoints){
               function ordHour(a, b) {
@@ -166,6 +172,7 @@ app.get('/home', loggedIn, async (req, res)=>{
 })
 
 
+// Adding appointment
 app.post("/adicionar", (req, res) => {
     var days=[['monday', 'Segunda-Feira'], ['tuesday', 'Terça-Feira'], ['wednesday', 'Quarta-Feira'], ['thursday','Quinta-Feira'],
             ['friday','Sexta-Feira'], ['saturday', 'Sábado'], ['sunday', 'Domingo']]
@@ -176,7 +183,6 @@ app.post("/adicionar", (req, res) => {
         break
       }
     }  
-
     Appointments.findOneAndUpdate(
       {user: req.user}, 
       { $push: { [`${dayEnglish}`]: [req.body.start, req.body.end, req.body.activity, req.body.desc] } }, 
@@ -195,12 +201,15 @@ app.post("/adicionar", (req, res) => {
 })
 
 
+// Logout route
 app.get("/sair", (req, res) => {
     req.logout((err) => {
         res.redirect("/")
     })
 })
 
+
+// Removing appointment
 app.get("/removerElemento/:day/:index", async (req, res) => {
   await Appointments.updateOne(
     { user: req.user },

@@ -30,6 +30,6 @@ passport.deserializeUser(function(id, done) {
     User.findById(id).then(user => {
       done(null, user.id)
     }).catch(error => {
-      console.error(error);
+        return done(null, false, {message: 'Erro ao buscar usuário!'})
     });
 });

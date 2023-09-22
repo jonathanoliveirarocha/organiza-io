@@ -25,7 +25,6 @@ function closeWindow(){
     document.querySelector('#end').value= null
     document.querySelector('#activity').value = null
     document.querySelector('#desc').value = null
-
 }
 
 function describe(list){
@@ -39,7 +38,6 @@ function describe(list){
     document.querySelector('#endDesc').value= list[2]
     document.querySelector('#activityDesc').value = list[3]
     document.querySelector('#descDesc').value = list[4]
-    
 }
 
 function closeMsg(){
@@ -50,31 +48,21 @@ function convertToEnglish(day){
     switch(day) {
         case 'Segunda-Feira':
             return 'monday'           
-            break
         case 'Terça-Feira':
             return 'tuesday'  
-            break
         case 'Quarta-Feira':
             return 'wednesday' 
-            break
         case 'Quinta-Feira':
             return 'thursday' 
-            break
         case 'Sexta-Feira':
             return 'friday' 
-            break
         case 'Sábado':
             return 'saturday' 
-            break
         case 'Domingo':
             return 'sunday' 
-            break
         default:
-
     }
-
 }
-
 
 function removeElement(){
     window.location.href = `/removerElemento/${clickedDayWeek}/${clickedID}`;
