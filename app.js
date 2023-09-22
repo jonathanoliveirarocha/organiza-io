@@ -169,7 +169,6 @@ app.get('/home', loggedIn, async (req, res)=>{
 
 
 app.post("/adicionar", (req, res) => {
-
     switch(req.body.daySelection) {
         case 'Segunda-Feira':
             Appointments.findOneAndUpdate(
