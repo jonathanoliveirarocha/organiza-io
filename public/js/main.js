@@ -48,7 +48,18 @@ function closeMsg(){
     document.querySelector(".status").style.display = "none"
 }
 
+// Animation msgDialog
+window.onload = function () {
+    var status = document.querySelector('.status')
+    setTimeout(() => {
+        status.classList.add('esconder'); 
+    }, 4000); 
 
+    setTimeout(() => {
+        status.style.display = 'none';
+        status.classList.remove('esconder');
+    }, 5500);
+} 
 
 // Convert day in Portuguese to English
 function convertToEnglish(day){
