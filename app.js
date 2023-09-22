@@ -59,26 +59,26 @@ app.get('/cadastro', (req, res)=>{
 })
 
 app.post('/cadastro', async (req, res)=>{
-  var erros = []
-    if(!req.body.username || typeof req.body.username == undefined || !req.body.username == null){
-        erros.push({texto: 'Nome inválido!'})
-    }
-    if(!req.body.email || typeof req.body.email == undefined || !req.body.email == null){
-        erros.push({texto:'E-mail inválido!'})
-    }
-    if (!req.body.password || typeof req.body.password == undefined || !req.body.password == null){
-        erros.push({texto:'Senha inválido!'})
-    }
-    if (req.body.password.length < 8){
-        erros.push({texto:'Senha muito curta!'})
-    }
-    if (req.body.password.length != req.body.password2.length){
-        erros.push({texto:'As senhas não coincidem!'})
-    }
-    if(erros.length>0){
-        res.render('signin', {error: erros})
-    }else{
-      try {
+      const { username, email, password,password1 } = req.body;
+      const existingUser = await User.findOne({ email });
+      var error=[]
+      if(username=='' || email=='' || password=='' || password1==''){
+        error.push("Por favor, preencha todos os campos!")
+      }
+      if(existingUser){
+        error.push("Este E-mail já está sendo utilizado!")
+      }
+      if(password<8){
+        error.push("A senha deve conter pelo menos 8 caracteres!")
+      }
+      if(password!=password1){
+        error.push("As senhas não conferem!")
+      }
+      if(error.length>0){
+        req.flash('error_msg', `${error[0]}`)
+        res.redirect('/cadastro')
+      }else{
+        try {
           const { username, email, password } = req.body;
           const newUser = new User({ username, email, password });
           bcrypt.genSalt(10, (err, salt)=>{
@@ -118,7 +118,10 @@ app.post('/cadastro', async (req, res)=>{
         } catch (err) {
           res.status(500).json({ error: `try again!` });
         }
-    }
+
+      }
+      
+
     
 })
 
