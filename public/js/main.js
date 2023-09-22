@@ -52,12 +52,12 @@ function closeMsg(){
 window.onload = function () {
     var status = document.querySelector('.status')
     setTimeout(() => {
-        status.classList.add('esconder'); 
+        status.classList.add('hidden'); 
     }, 4000); 
 
     setTimeout(() => {
         status.style.display = 'none';
-        status.classList.remove('esconder');
+        status.classList.remove('hidden');
     }, 5500);
 } 
 

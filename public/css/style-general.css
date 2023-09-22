@@ -10,10 +10,9 @@
     transition: opacity 0.5s ease-in-out;
 }
 
-.esconder {
+.hidden {
     opacity: 0;
 }
-
 
 .statusMsg{
     width: 800px;
