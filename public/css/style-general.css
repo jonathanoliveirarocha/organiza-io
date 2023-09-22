@@ -7,7 +7,13 @@
     display: flex;
     pointer-events: none;
     justify-content: center;
+    transition: opacity 0.5s ease-in-out;
 }
+
+.esconder {
+    opacity: 0;
+}
+
 
 .statusMsg{
     width: 800px;

@@ -1,13 +1,15 @@
+// Defining selected day variables
 var clickedID=0;
 var clickedDayWeek="";
 
+// Show addition form
 function add(){
     document.querySelector(".main").style.filter = "blur(5px)"
     document.querySelector(".efect").style.display ="flex"
     document.querySelector(".addForm").style.display ="flex"
-    
 }
 
+// Close add or description window
 function closeWindow(){
     document.querySelector(".efect").style.display ="none"
     document.querySelector(".descForm").style.display ="none"
@@ -27,6 +29,7 @@ function closeWindow(){
     document.querySelector('#desc').value = null
 }
 
+// Fill data and show description form
 function describe(list){
     clickedDayWeek= convertToEnglish(list[0])
     clickedID=list[5]
@@ -40,10 +43,14 @@ function describe(list){
     document.querySelector('#descDesc').value = list[4]
 }
 
+// Close status message
 function closeMsg(){
     document.querySelector(".status").style.display = "none"
 }
 
+
+
+// Convert day in Portuguese to English
 function convertToEnglish(day){
     switch(day) {
         case 'Segunda-Feira':
@@ -64,6 +71,7 @@ function convertToEnglish(day){
     }
 }
 
+// Access remove element route
 function removeElement(){
     window.location.href = `/removerElemento/${clickedDayWeek}/${clickedID}`;
 }

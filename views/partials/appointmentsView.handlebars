@@ -1,0 +1,148 @@
+<div class="days">
+    <div class="monday">
+        <div class="title">
+            <h1>Segunda-Feira</h1>
+        </div>
+        <div class="appointments" id="appointmentsmonday">
+            {{#each monday}}
+                <div class="appointmentItem" onclick="describe(['Segunda-Feira','{{this.[0]}}','{{this.[1]}}','{{this.[2]}}','{{this.[3]}}',{{@index}}])">
+                    <div class="hour">
+                        <p>{{this.[0]}}</p>
+                    </div>
+                    <div class="appointmentDesc">
+                        <p>{{this.[2]}}</p>
+                    </div>
+                    <div class="hourEnd">
+                        <p>{{this.[1]}}</p>
+                    </div> 
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="tuesday">
+        <div class="title">
+            <h1>Terça-Feira</h1>
+        </div>             
+        <div class="appointments" id="appointmentstuesday">   
+            {{#each tuesday}}
+                <div class="appointmentItem" onclick="describe(['Terça-Feira','{{this.[0]}}','{{this.[1]}}','{{this.[2]}}','{{this.[3]}}',{{@index}}])">
+                    <div class="hour">
+                        <p>{{this.[0]}}</p>
+                    </div>
+                    <div class="appointmentDesc">
+                        <p>{{this.[2]}}</p>
+                    </div>
+                    <div class="hourEnd">
+                        <p>{{this.[1]}}</p>
+                    </div> 
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="wednesday">
+        <div class="title">
+            <h1>Quarta-Feira</h1>
+        </div>
+        <div class="appointments" id="appointmentswednesday">
+            {{#each wednesday}}
+                <div class="appointmentItem" onclick="describe(['Quarta-Feira','{{this.[0]}}','{{this.[1]}}','{{this.[2]}}','{{this.[3]}}',{{@index}}])">
+                    <div class="hour">
+                        <p>{{this.[0]}}</p>
+                    </div>
+                    <div class="appointmentDesc">
+                        <p>{{this.[2]}}</p>
+                    </div>
+                    <div class="hourEnd">
+                        <p>{{this.[1]}}</p>
+                    </div> 
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="thursday">
+        <div class="title">
+            <h1>Quinta-Feira</h1>
+        </div>                
+        <div class="appointments" id="appointmentsthursday">
+            {{#each thursday}}
+                <div class="appointmentItem" onclick="describe(['Quinta-Feira','{{this.[0]}}','{{this.[1]}}','{{this.[2]}}','{{this.[3]}}',{{@index}}])">
+                    <div class="hour">
+                        <p>{{this.[0]}}</p>
+                    </div>
+                    <div class="appointmentDesc">
+                        <p>{{this.[2]}}</p>
+                    </div>
+                    <div class="hourEnd">
+                        <p>{{this.[1]}}</p>
+                    </div> 
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="friday">
+        <div class="title">
+            <h1>Sexta-Feira</h1>
+        </div>
+        <div class="appointments" id="appointmentsfriday">
+            {{#each friday}}
+                <div class="appointmentItem" onclick="describe(['Sexta-Feira','{{this.[0]}}','{{this.[1]}}','{{this.[2]}}','{{this.[3]}}',{{@index}}])">
+                    <div class="hour">
+                        <p>{{this.[0]}}</p>
+                    </div>
+                    <div class="appointmentDesc">
+                        <p>{{this.[2]}}</p>
+                    </div>
+                    <div class="hourEnd">
+                        <p>{{this.[1]}}</p>
+                    </div> 
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="saturday">
+        <div class="title">
+            <h1>Sábado</h1>
+        </div>
+        <div class="appointments" id="appointmentssaturday">
+            {{#each saturday}}
+                <div class="appointmentItem" onclick="describe(['Sábado','{{this.[0]}}','{{this.[1]}}','{{this.[2]}}','{{this.[3]}}',{{@index}}])">
+                    <div class="hour">
+                        <p>{{this.[0]}}</p>
+                    </div>
+                    <div class="appointmentDesc">
+                        <p>{{this.[2]}}</p>
+                    </div>
+                    <div class="hourEnd">
+                        <p>{{this.[1]}}</p>
+                    </div> 
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="sunday">
+        <div class="title">
+            <h1>Domingo</h1>
+        </div>                
+        <div class="appointments" id="appointmentssunday">
+            {{#each sunday}}
+                <div class="appointmentItem" onclick="describe(['Domingo','{{this.[0]}}','{{this.[1]}}','{{this.[2]}}','{{this.[3]}}',{{@index}}])">
+                    <div class="hour">
+                        <p>{{this.[0]}}</p>
+                    </div>
+                    <div class="appointmentDesc">
+                        <p>{{this.[2]}}</p>
+                    </div>
+                    <div class="hourEnd">
+                        <p>{{this.[1]}}</p>
+                    </div> 
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div> 
