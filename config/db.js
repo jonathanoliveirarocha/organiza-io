@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
+const mongouri = require('./mongouri');
 
 var temp = '';
 if(process.env.NODE_ENV == 'production'){
     temp = '<ProductionURI>'
 }else{
-    temp = ''
+    temp = mongouri.databaseURI
 }
 const url = temp;
 mongoose.connect(url, {
