@@ -1,6 +1,6 @@
 // Defining selected day variables
-var clickedID=0;
-var clickedDayWeek="";
+var clickedID=0
+var clickedDayWeek=""
 
 // Show addition form
 function add(){
@@ -86,3 +86,61 @@ function convertToEnglish(day){
 function removeElement(){
     window.location.href = `/removerElemento/${clickedDayWeek}/${clickedID}`;
 }
+
+// Dark-mode
+    // Elements
+    var btnDarkMode = document.getElementById('dark-mode-btn')
+    var isEnabled = localStorage.getItem('dark-mode')
+    var daysDiv = document.querySelector('.days')
+    var titleh1 = document.querySelectorAll('.title h1')
+    var appointmentsDivs = document.querySelectorAll('.appointments')
+    var titleDivs = document.querySelectorAll('.title')
+    var updateFormDiv = document.querySelector('.updateForm')
+    var selects = document.querySelectorAll('select')
+    var textarea = document.querySelectorAll('textarea')
+    var addFormBtn = document.querySelector('#addFormBtn')
+    var inputs = document.querySelectorAll('input')
+
+    function turningElementsDark(){
+        // Turning elements in dark-mode
+        document.body.classList.toggle('dark-mode')
+        daysDiv.classList.toggle('dark-mode')
+        updateFormDiv.classList.toggle('dark-mode')
+        addFormBtn.classList.toggle('dark-mode')
+        inputs.forEach(item => {
+            item.classList.toggle('dark-mode')
+        });
+        textarea.forEach(item => {
+            item.classList.toggle('dark-mode')
+        });
+        selects.forEach(item => {
+            item.classList.toggle('dark-mode')
+        });
+        titleh1.forEach(item => {
+            item.classList.toggle('dark-mode')
+        });
+        appointmentsDivs.forEach(item => {
+            item.classList.toggle('dark-mode')
+        });
+
+        titleDivs.forEach(div => {
+            div.classList.toggle('dark-mode')
+        });
+    }
+
+    function darkMode() {
+        turningElementsDark()
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('dark-mode', 'true')
+        } else {
+            localStorage.setItem('dark-mode', 'false')
+        }
+    }
+
+    if (isEnabled=='true') {
+        btnDarkMode.click()
+        turningElementsDark()
+    }
+
+    btnDarkMode.addEventListener('click', darkMode)
+

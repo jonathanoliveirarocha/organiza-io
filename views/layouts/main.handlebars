@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organiza.io</title>    
     <link rel="stylesheet" href="/css/style-general.css">
-    <script src="/js/main.js"></script>
 </head>
 <body>
      {{{body}}}
      <div class="status">
         {{#if error}}
-            <div class="statusMsg danger">
+            <div class="statusMsg danger borderDanger">
                 <div class="closeMsg">
                     <img src="/images/closeWindow2.png" alt="Botão de Fechar" onclick="closeMsg()">
                     <!-- Used Image: https://br.freepik.com/icone/perto_2976286#fromView=search&term=close+&page=1&position=0 -->
@@ -24,6 +23,7 @@
         {{else}}
         {{/if}}
         {{>_msg}}
+        <script src="/js/main.js"></script>
     </div>  
 </body>
 </html>

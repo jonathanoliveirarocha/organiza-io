@@ -50,6 +50,14 @@
 }
 
 .danger{
-    color: rgb(161, 20, 20);
-    background-color: #b67777;
+    color: rgb(183, 28, 28);
+    background-color: #cd9c9c;
+}
+
+.borderSuccess{
+    border:1.5px solid;
+}
+
+.borderDanger{
+    border:1.5px solid;
 }
