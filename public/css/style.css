@@ -1,15 +1,31 @@
+/* General */
 *{
-    font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     padding: 0px;
-    color: #87878a;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    background-color: initial;
+    border: 1px solid back;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #555;
+    border-radius: 20px;  
+}
+
+/* Page content */
 body, html{
     height: 100%;
     background-color: #fffafa;
+    color: #87878a;
+    font-family: Arial, Helvetica, sans-serif;  
 }
 
+/* Main div */
 .main{
     width: 100%;
     height: 100%;
@@ -17,6 +33,7 @@ body, html{
     position: absolute;
 }
 
+/* CTA banner */
 .bannerContent{
     display: inline-block;
     position: relative;
@@ -43,73 +60,66 @@ body, html{
     width: 40%;
 }
 
+/* Login form align */
 .loginArea{
+    display: flex;
     align-items: center;
     text-align: center;
     margin: 0 auto;
-    display: flex;
 }
 
 .content{
     width: 500px;
- 
 }
 
-.void{ 
+/* Form content style */
+h1{
+    color: #d75413;
+}
+
+.loginInputs{ 
     width: auto;
     margin-left: 50px;
     margin-right: 50px;
 }
 
-input{
-   width: 97%;
-   height: 30px;
-   padding-left: 3%;
-   border-radius: 7px;
-   border: #fffafa;
-   box-shadow: 0px 0px 20px 1px rgba(128, 128, 128, 0.818);
-}
-
-.loginInputs{
-    text-align: left;
-}
-
-button:hover{
-    cursor:pointer;
-}
-
-h1{
-    color: #d75413;
-}
-
 p{
+    text-align: left;
     margin-top: 30px;
     margin-bottom: 10px;
 }
 
+input{
+    width: 97%;
+    height: 30px;
+    padding-left: 3%;
+    border-radius: 7px;
+    border: #fffafa;
+    box-shadow: 0px 0px 20px 1px rgba(128, 128, 128, 0.818);
+}
+
 button{
+    width: 100%; 
     height: 30px;
     border-radius: 7px;
     border: none;
-    background-color: #d75413;
     margin-top: 40px;
-    width: 100%; 
+    background-color: #d75413;
     color: #f7ebe2;
     box-shadow: 0px 0px 10px -4px black;
 }
 
 button:hover{
-    background-color: #e38759;
+    background-color: #db6b34;
     transform: scale(1.01);
     box-shadow: 0px 0px 15px -5px black;
+    cursor:pointer;
 }
 
 button:active{
-    background-color: #e38759;
     transform: scale(0.99);
-    box-shadow: 0px 0px 0px 0px black;
+    box-shadow: none;
 }
-
 
 .links{
     margin-top: 40px;
@@ -125,25 +135,12 @@ a:hover{
     color: #e38759;
 }
 
-::-webkit-scrollbar{
-    background-color: rgb(184, 187, 189);
-    width: 7px;
-    border: 1px solid back;
-    color: #1a1a1a;
-}
-
-::-webkit-scrollbar-thumb{
-    background-color: #5a5959;
-    border-radius: 20px;
-    
-}
-
+/* Mobile version */
 @media only screen and (max-device-width: 1163px) {
     .bannerContent{
         display: none;
     };
     .loginArea{
         width: 100%;
-       
     };
 }
