@@ -1,40 +1,22 @@
 <link rel="stylesheet" href="/css/style-main.css">
 
 <div class="main">
-      <header>
-        <nav class="nav-items ">
-                <a href="/home" id="logo" class="to-left padding-large animation-item"><h1>Organiza<span>.io</span></h1></a>
-                <a href="/sair" class="to-right padding-large">
-                    <button type="submit" class="logout padding-large animation-item">Sair</button>
-                </a>
-                <a href="/home" class="to-right margin-small"><span id="person">{{username}}</span></a>
+  
+  {{>navbar}}  
 
-                <div class="dark-mode-div to-right">
-                    <input type="checkbox" id="dark-mode-btn" style="display: none;">
-                    <label for="dark-mode-btn" class="darkBackgroundBtn">
-                        <div class="slider"></div>
-                        <img src="/images/sun-whiteMode.svg" alt="Sol" class="sun-icon">
-                        <!-- Used image link: https://www.svgrepo.com/svg/532875/moon -->
-                        <img src="/images/moon-darkMode.svg" alt="Lua" class="moon-icon">
-                        <!-- Used image link: https://www.svgrepo.com/svg/532889/sun-->
-                    </label>
-                </div>
-        </nav>
-      </header> 
+  <div class="content align-c-vh">      
+    {{>appointmentsView}}   
+  </div>
 
-      <div class="content align-c-vh">      
-        {{>appointmentsView}}   
-      </div>
-
-      <div class="addDiv">
-        <input id="add" class="animation-item" type="button" value="Adicionar" onclick="add()">
-      </div>
+  <div class="addDiv">
+    <input id="add" class="animation-item" type="button" value="Adicionar" onclick="add()">
+  </div>
       
-      <footer class="align-c-vh">
-        <a class="animation-item" href="https://github.com/jonathanoliveirarocha" target="_blank">&copy Jonathan de Oliveira Rocha</a>
-      </footer>
+  <footer class="align-c-vh">
+    <a class="animation-item" href="https://github.com/jonathanoliveirarocha" target="_blank">&copy Jonathan de Oliveira Rocha</a>
+  </footer>
 </div>
 
-    {{>formsView}}
+{{>formsView}}
 
   
