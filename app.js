@@ -12,7 +12,6 @@ const {loggedIn} = require('./helpers/loggedIn');
 require('./config/auth')(passport);
 const session = require('express-session');
 const flash = require('connect-flash');
-const e = require('connect-flash');
 
 // Config
     // Views
