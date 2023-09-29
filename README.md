@@ -1,12 +1,10 @@
 ## Organiza.io
 
-- Accessible project link: <a href="https://organiza-io.onrender.com/">Organiza.io</a>
+__Accessible project link: <a href="https://organiza-io.onrender.com/">Organiza.io</a>__
 
 ### What it is :
 
 The project came about with the aim of facilitating my weekly organization, creating a schedule so that I could write down my actions, organizing them in a way that makes it easier to view. So that I could pass this idea forward, I created a registration system so that several people can use the same system, all while saving each person's data in the cloud, to access from anywhere, on different devices. This data can be expanded to each registered appointment, thus showing the complete description of each activity, as well as its possible deletion. To better adapt the appearance to each person's preference, I created a selection for a light or night theme.
-
-
 
 > Program developed in my native language (Portuguese).
 
@@ -32,7 +30,6 @@ The project came about with the aim of facilitating my weekly organization, crea
 
 2. To run the project, you need go to the "db.js" file, located in the "config" folder, and replace the "temp" variable with your access link to the MongoDB database.
 
-
 3. Then install the project <a href="./package.json">requirements</a> with the command in the terminal:
     ```bash
     npm install
@@ -44,8 +41,7 @@ The project came about with the aim of facilitating my weekly organization, crea
     node app.js
 
     ```
-
-
+    
 ### Preview :
 
 <table width="100%"> 
