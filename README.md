@@ -8,7 +8,7 @@ The project came about with the aim of facilitating my weekly organization, crea
 
 > Program developed in my native language (Portuguese).
 
-#### Technologies and libraries used :
+### Technologies and libraries used :
 * HTML, CSS , JavaScript
 * Node.js
 * MongoDB
