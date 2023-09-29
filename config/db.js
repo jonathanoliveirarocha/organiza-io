@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 
 var temp = '';
 if(process.env.NODE_ENV == 'production'){
-    temp = '<ProductionURI>'
+    temp = '<PRODUCTION-URI>'
 }else{
-    temp = ''
+    temp = '<LOCAL-URI>'
 }
 const url = temp;
 mongoose.connect(url, {
