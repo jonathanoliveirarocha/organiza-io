@@ -1,3 +1,4 @@
+{{!-- General content of all pages --}}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,9 +9,14 @@
     <link rel="stylesheet" href="/css/style-general.css">
 </head>
 <body>
-     {{{body}}}
-     <div class="status">
+
+    {{!-- Page content --}}
+    {{{body}}}
+
+    {{!-- Error or success message --}}
+    <div class="status">
         {{#if error}}
+            {{!-- Message if there is an authentication error  --}}
             <div class="statusMsg danger borderDanger">
                 <div class="closeMsg">
                     <img src="/images/closeWindow2.png" alt="Botão de Fechar" onclick="closeMsg()">
@@ -22,8 +28,11 @@
             </div>
         {{else}}
         {{/if}}
+        {{!-- Testing success or error in other cases --}}
         {{>_msg}}
-        <script src="/js/main.js"></script>
-    </div>  
+    </div> 
+
+     {{!-- JavaScript import --}}
+    <script src="/js/main.js"></script>
 </body>
 </html>

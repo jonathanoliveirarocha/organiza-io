@@ -1,12 +1,19 @@
 const mongoose = require('mongoose')
 
 var temp = '';
+
+// Checking if you are in a production or local environment
 if(process.env.NODE_ENV == 'production'){
-    temp = '<PRODUCTION-URI>'
+  // Enter your production Mongodb URI
+  temp = '<PRODUCTION-URI>'
 }else{
-    temp = '<LOCAL-URI>'
+  // Enter your local Mongodb URI
+  temp = '<LOCAL-URI>'
 }
+
 const url = temp;
+
+// Connecting to the database
 mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const User = require('../models/User');
 
+// Configuring passport authentication method
 module.exports = function(passport){
     passport.use(new localStrategy({usernameField: 'email', passwordField: 'password'}, (email, password, done)=>{
         User.findOne({email: email}).then((user)=>{
@@ -22,9 +23,10 @@ module.exports = function(passport){
       }))
 }
 
+// Configuring the return of the serializeUser and deserializeUser functions
 passport.serializeUser(function(user, done) {
     done(null, user.id);
-  });
+});
   
 passport.deserializeUser(function(id, done) {
     User.findById(id).then(user => {

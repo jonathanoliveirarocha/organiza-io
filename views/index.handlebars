@@ -1,23 +1,29 @@
+{{!-- Specific CSS import --}}
 <link rel="stylesheet" href="/css/style-main.css">
 
+{{!-- Main div --}}
 <div class="main">
-  
+  {{!-- Importing partial '/views/partials/navbar.handlebars' containing the page header --}}
   {{>navbar}}  
 
+  {{!-- Importing partial '/views/partials/appointmentsView.handlebars' containing the appointments --}}
   <div class="content align-c-vh">      
     {{>appointmentsView}}   
   </div>
 
+  {{!-- Button to add appointment --}}
   <div class="addDiv">
     <input id="add" class="animation-item" type="button" value="Adicionar" onclick="add()">
   </div>
-      
+
+  {{!-- Page footer --}}
   <footer class="align-c-vh">
     <a class="animation-item" href="https://github.com/jonathanoliveirarocha" target="_blank">&copy Jonathan de Oliveira Rocha</a>
   </footer>
   
 </div>
 
+{{!-- Importing partial '/views/partials/formsView.handlebars' containing the form to add or display appointment--}}
 {{>formsView}}
 
   
