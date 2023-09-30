@@ -4,6 +4,10 @@ var clickedDayWeek=""
 
 // Show addition form
 function add(){
+    window.scrollTo({
+        top: 0
+    });
+    document.body.style.overflow = 'hidden';
     document.querySelector(".main").style.filter = "blur(5px)"
     document.querySelector(".efect").style.display ="flex"
     document.querySelector(".addForm").style.display ="flex"
@@ -11,6 +15,7 @@ function add(){
 
 // Close add or description window
 function closeWindow(){
+    document.body.style.overflow = 'auto';
     document.querySelector(".efect").style.display ="none"
     document.querySelector(".descForm").style.display ="none"
     document.querySelector(".addForm").style.display ="none"
@@ -31,6 +36,10 @@ function closeWindow(){
 
 // Fill data and show description form
 function describe(list){
+    window.scrollTo({
+        top: 0
+    });
+    document.body.style.overflow = 'hidden';
     clickedDayWeek= convertToEnglish(list[0])
     clickedID=list[5]
     document.querySelector(".main").style.filter = "blur(5px)"

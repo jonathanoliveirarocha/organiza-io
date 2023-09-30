@@ -136,10 +136,11 @@ a:hover{
 }
 
 /* Mobile version */
-@media only screen and (max-device-width: 1163px) {
+@media (max-width: 1289px) {
     .bannerContent{
         display: none;
     };
+
     .loginArea{
         width: 100%;
     };

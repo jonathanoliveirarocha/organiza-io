@@ -20,7 +20,7 @@
 /* Page content */
 body, html{
     height: 100%;
-    background-color: #eaeaea;
+    background-color: initial;
     font-family: Arial, Helvetica, sans-serif;
     transition: background-color 0.3s ease-in-out;
 }
@@ -508,4 +508,76 @@ textarea.dark-mode{
 
 #remFormBtn:hover{
     background-color: #af4f4f;
+}
+
+/* Mobile version */
+@media (max-width: 1232px) {
+    #logo{
+        display: none;
+    }
+
+    .content{
+        height: fit-content;
+    }
+
+    .days{
+        box-shadow: none;
+        width: 80%;
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .days.dark-mode{
+        box-shadow: none;
+    }
+
+    .title{
+        border: none; 
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        box-shadow: 0px 0px 10px 0px #bebcbc;
+    }
+
+    .title.dark-mode{
+        box-shadow: 0px 0px 5px 0px #303038;
+    }
+
+    .appointments{
+        width: auto;
+        height: 200px;
+        border: none;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0px 0px 10px 0px #bebcbc;
+    }
+        
+    .appointments.dark-mode{
+        box-shadow: 0px 0px 5px 0px #303038;
+    }
+
+    .addDiv{
+        margin-top: -35px;
+        margin-bottom: 30px;
+        height: fit-content;
+    }
+
+    footer{
+        position:relative;
+    }
+
+    .efect{
+        align-items: center;
+        text-align: center;
+    }
+
+    .updateForm{
+        margin-top: -5%;
+        height: 70%;
+        width: 95%; 
+    }
+    
+    .formAddInputs{
+        width: 85%; 
+    } 
 }
