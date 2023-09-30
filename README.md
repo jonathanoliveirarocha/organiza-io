@@ -44,6 +44,8 @@ The project came about with the aim of facilitating my weekly organization, crea
     
 ### Preview :
 
+#### Desktop
+
 <table width="100%"> 
 <tr>
 <td width="50%">
@@ -58,5 +60,23 @@ The project came about with the aim of facilitating my weekly organization, crea
 </td> 
 <td width="50%">
 <img src="./SAMPLE/SAMPLE4.png/">
+</td> 
+</table>
+
+#### Mobile
+
+<table width="100%"> 
+<tr>
+<td width="25%">
+<img src="./SAMPLE/SAMPLE5.png/">
+</td> 
+<td width="25%">
+<img src="./SAMPLE/SAMPLE6.png/">
+</td> 
+<td width="25%">
+<img src="./SAMPLE/SAMPLE7.png/">
+</td> 
+<td width="25%">
+<img src="./SAMPLE/SAMPLE8.png/">
 </td> 
 </table>
