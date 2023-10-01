@@ -346,7 +346,7 @@ header{
 }
 
 #add{
-    padding: 5px;
+    padding: 1px;
     width: 80px;
     border-radius: 7px;
     box-shadow: 0px 5px 10px -4px #484847;
@@ -437,8 +437,10 @@ footer{
 }
 
 input, select{
+    all:unset;
     width: 97%;
     height: 30px;
+    font-size: small;
     padding-left: 3%;
     border-radius: 7px;
     border: #fffafa;
@@ -457,14 +459,20 @@ input.dark-mode{
     box-shadow: 0px 0px 10px 0px #32343d;
 }
 
-select{
-    width: 100%;
+select, input[type="time"]{
+    line-height: 30px;
+}
+
+input[type="button"]{
+    text-align: center;
 }
 
 textarea{
+    all:unset;
     font-family: inherit;
+    font-size: small;
     resize: none;
-    width: 95.5%;
+    width: 96%;
     height: 70px;
     padding: 3%;
     padding: 2%;
@@ -523,6 +531,7 @@ textarea.dark-mode{
     .days{
         box-shadow: none;
         width: 80%;
+        max-width: 331px;
         display: block;
         margin-bottom: 50px;
     }
@@ -572,12 +581,21 @@ textarea.dark-mode{
     }
 
     .updateForm{
-        margin-top: -5%;
-        height: 70%;
+        margin-top: 0;
+        height: fit-content;
+        padding-bottom: 40px;
         width: 95%; 
+        min-width: 343px;
+        max-width: 800px;
     }
-    
+
     .formAddInputs{
-        width: 85%; 
+        min-width: 314px;
+    }
+
+    select, input[type="time"]{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     } 
 }
