@@ -1,5 +1,5 @@
 {
-  "name": "organiza.io",
+  "name": "organiza-io",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonathanoliveirarocha/Organiza.io.git"
+    "url": "git+https://github.com/jonathanoliveirarocha/organiza-io.git"
   },
   "author": "jonathanoliveirarocha",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jonathanoliveirarocha/Organiza.io/issues"
+    "url": "https://github.com/jonathanoliveirarocha/organiza-io/issues"
   },
-  "homepage": "https://github.com/jonathanoliveirarocha/Organiza.io#readme",
+  "homepage": "https://github.com/jonathanoliveirarocha/organiza-io#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
