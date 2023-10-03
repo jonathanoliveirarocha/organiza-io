@@ -26,7 +26,7 @@ The project came about with the aim of facilitating my weekly organization, crea
 
 1. First, make sure you have <a href="https://nodejs.org/en">Node.js</a> installed on your machine.
 
-    > Program developed in version 18.12.1 on Node
+    > Program developed in version 18.12.1 on Node.js
 
 2. To run the project, you need go to the "db.js" file, located in the "config" folder, and replace the "temp" variable with your access link to the MongoDB database.
 
