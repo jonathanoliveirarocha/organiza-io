@@ -25,6 +25,7 @@ const flash = require('connect-flash');
 
     // Sessions
     app.use(session({
+        // Secret key for demonstration only
         secret: 'jonathanorganizaio',
         resave: false,
         saveUninitialized: false,
