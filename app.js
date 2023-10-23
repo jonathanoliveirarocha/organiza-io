@@ -173,7 +173,7 @@ app.get('/home', loggedIn, async (req, res)=>{
 
 
 // Adding appointment
-app.post("/adicionar", (req, res) => {
+app.post("/adicionar",loggedIn, (req, res) => {
     var days=[['monday', 'Segunda-Feira'], ['tuesday', 'Terça-Feira'], ['wednesday', 'Quarta-Feira'], ['thursday','Quinta-Feira'],
             ['friday','Sexta-Feira'], ['saturday', 'Sábado'], ['sunday', 'Domingo']]
     var dayEnglish;
@@ -210,7 +210,7 @@ app.get("/sair", (req, res) => {
 
 
 // Removing appointment
-app.get("/removerElemento/:day/:index", async (req, res) => {
+app.get("/removerElemento/:day/:index", loggedIn, async (req, res) => {
   await Appointments.updateOne(
     { user: req.user },
     {
