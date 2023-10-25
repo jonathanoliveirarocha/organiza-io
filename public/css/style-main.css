@@ -508,6 +508,7 @@ textarea.dark-mode{
 }
 
 #remFormBtn{
+    width: 97%;
     margin-top: 40px;
     color: rgb(229, 227, 227);
     background-color: #a64e4e;
