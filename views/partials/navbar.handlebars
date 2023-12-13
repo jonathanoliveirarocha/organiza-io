@@ -1,20 +1,15 @@
-{{!-- Site Header --}}
 <header>
     <nav class="nav-items ">
-        {{!-- Page logo --}}
         <a href="/home" id="logo" class="to-left padding-large animation-item">
             <h1>Organiza<span>.io</span></h1>
         </a>
-        {{!-- Logout button --}}
         <a href="/sair" class="to-right padding-large">
             <button type="submit" class="logout padding-large animation-item">Sair</button>
         </a>
-        {{!-- Logged in user --}}
         <a href="/home" class="to-right margin-small">
             <span id="person">{{username}}</span>
         </a>
 
-        {{!-- Dark mode button --}}
         <div class="dark-mode-div to-right">
             <input type="checkbox" id="dark-mode-btn" style="display: none;">
             <label for="dark-mode-btn" class="darkBackgroundBtn">

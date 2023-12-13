@@ -1,4 +1,3 @@
-{{!-- Form to add or Displaying appointment  --}}
 <div class="efect">
     <div class="updateForm">
         <div class="closeWindow">
@@ -6,10 +5,8 @@
             <!-- Used Image: https://br.freepik.com/icone/fechar_6276642#fromView=search&term=close+&page=1&position=63 -->
         </div>
 
-        {{!-- Add appointment --}}
         <div class="addForm">
-            <div class="formAddInputs">
-                {{!-- Form to add --}}
+            <div class="formAddInputs">    
                 <form action="/adicionar" method="post">
                     <h1>Adicionar</h1>
                     <p>Dia da Semana:</p>
@@ -36,11 +33,9 @@
                 </form>
             </div>
         </div>
-
-        {{!-- Displaying appointment --}}  
+  
         <div class="descForm">
-            <div class="formAddInputs">
-                {{!-- Displaying clicked appointment information --}}
+            <div class="formAddInputs">    
                 <h1>Descrição</h1>
                 <p>Dia da Semana:</p>
                 <select disabled name="daySelection" id="daySelectionDesc">
@@ -61,8 +56,7 @@
                 <input name="activity" id="activityDesc" placeholder="Digite um Rótulo para a Atividade" type="text" maxlength="11" disabled>
                 <p>Descrição:</p>
                 <textarea placeholder="Digite uma Breve Descrição da Atividade" name="desc" id="descDesc" cols="40" rows="10" disabled></textarea>
-                <br>
-                {{!-- Remove appointment --}}
+                <br>    
                 <input id="remFormBtn" type="button" class="animation-item" value="Remover" onclick="removeElement()">
             </div>             
         </div>

@@ -1,10 +1,8 @@
-/* General */
 *{
     padding: 0px;
     margin: 0px;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar{
     background-color: inherit;
     width: 4px;
@@ -17,7 +15,6 @@
     border-radius: 20px; 
 }
 
-/* Page content */
 body, html{
     height: 100%;
     background-color: initial;
@@ -29,7 +26,6 @@ body.dark-mode{
     background-color: #343541;
 }
 
-/* classes used */
 .to-right{
     float: right !important;
 }
@@ -61,7 +57,6 @@ body.dark-mode{
     box-shadow: none !important;
 }
 
-/* General styles */
 h1{
     font-size: 20px;
 }
@@ -75,14 +70,12 @@ button, select, #start, #end, #remFormBtn, #add, .appointmentItem:hover{
     cursor:pointer;
 }
 
-/* Main div */
 .main{
     width: 100%;
     height: 100%;
     position: absolute;
 }
 
-/* Header */
 header{
     top:0;
     display: block;
@@ -98,7 +91,6 @@ header{
     border: none;
 }
 
-/* Page logo */
 #logo{
     color: rgb(241, 241, 241);
 }
@@ -107,7 +99,6 @@ header{
     color: #cf6f08;
 }
 
-/* Button dark-mode */
 .dark-mode-div{
     margin-top: 4px;
     margin-right: 10px;
@@ -151,7 +142,6 @@ header{
     transition: opacity 0.2s ease-in-out;
 }
 
-/* Button dark-mode animation */
 #dark-mode-btn:checked + .darkBackgroundBtn .slider {
     transform: translateX(22.5px);
 }
@@ -168,7 +158,6 @@ header{
     background-image: linear-gradient(to right,#4a4a4a, #efefef);
 }
 
-/* Person loged in */
 #person{
     color: #dedada;
     font-size: small;
@@ -179,7 +168,6 @@ header{
     color:#e38759;
 }
 
-/* Log out Button */
 .logout{
     color: #f7ebe2;
     width: 80px;
@@ -194,14 +182,12 @@ header{
     background-color: #d97848;
 }
 
-/* Page Content */
 .content{
     width: 100%;
     height: 79%;
     text-align: center;
 }
 
-/* Timeline */
 .days{
     margin-top: 5%;
     border-radius: 10px;
@@ -214,7 +200,6 @@ header{
     box-shadow: 0px 0px 5px 0px #303038;
 }
 
-/* Days title div */
 .title{
     background-color: #cccccc;
     padding: 10px;
@@ -237,7 +222,6 @@ header{
     color: #c5c5d2;
  }
 
-/* Special styles */
 .monday .title{
     border-left-style: none;
     border-top-left-radius: 10px;
@@ -256,7 +240,6 @@ header{
     border-bottom-left-radius: 10px;
 }
 
-/* Appointments */
 .appointments{
     background-color: #fafffe;
     height: 500px;
@@ -278,7 +261,6 @@ header{
     overflow-y: auto;
 }
 
-/* Appointment items */
 .appointmentItem{
     height: 25px;
     border-radius: 4.5px;
@@ -310,7 +292,6 @@ header{
     box-shadow: 0px 0px 6px 0px black;
 }
 
-/* Appointment item colors */
 .monday .appointmentItem{
     background-color: #b06f6fb1;
 }
@@ -339,7 +320,6 @@ header{
     background-color: rgba(172, 114, 227, 0.805);
 }
 
-/* Add appointment button */
 .addDiv{
     height: 13%;
     text-align: center;
@@ -359,7 +339,6 @@ header{
     background-color: hsl(146, 46%, 39%);
 }
 
-/* Footer */
 footer{
     position: fixed;
     bottom: 0;
@@ -368,7 +347,6 @@ footer{
     background-color: #202123;
 }
 
-/* Form add/desc */
 .efect{
     position: absolute;
     width: 100%;
@@ -378,7 +356,6 @@ footer{
     justify-content: center;
 }
 
-/* Close window button */
 .closeWindow{
     width: 100%;
     text-align: right;
@@ -393,7 +370,6 @@ footer{
     cursor: pointer;
 }
 
-/* Forms style */
 .updateForm{
     color: #89898d;
     margin-top: 7%;
@@ -423,7 +399,6 @@ footer{
     text-align: left;
 }
 
-/* Form content styles */
 .updateForm h1{
     font-size: 30px;
     margin-bottom: 30px;
@@ -518,7 +493,6 @@ textarea.dark-mode{
     background-color: #af4f4f;
 }
 
-/* Mobile version */
 @media (max-width: 1232px) {
     #logo{
         display: none;

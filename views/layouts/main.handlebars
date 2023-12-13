@@ -1,4 +1,3 @@
-{{!-- General content of all pages --}}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,15 +9,11 @@
     <!-- Used Image: https://www.flaticon.com/br/icone-gratis/cronograma_470326?term=cronograma&page=1&position=5&origin=search&related_id=470326 -->
     <link rel="stylesheet" href="/css/style-general.css">
 </head>
-<body>
-
-    {{!-- Page content --}}
+<body>    
     {{{body}}}
-
-    {{!-- Error or success message --}}
+    
     <div class="status">
-        {{#if error}}
-            {{!-- Message if there is an authentication error  --}}
+        {{#if error}}           
             <div class="statusMsg danger borderDanger">
                 <div class="closeMsg">
                     <img src="/images/closeWindow2.png" alt="Botão de Fechar" onclick="closeMsg()">
@@ -30,11 +25,9 @@
             </div>
         {{else}}
         {{/if}}
-        {{!-- Testing success or error in other cases --}}
+        
         {{>_msg}}
-    </div> 
-
-     {{!-- JavaScript import --}}
+    </div>     
     <script src="/js/main.js"></script>
 </body>
 </html>

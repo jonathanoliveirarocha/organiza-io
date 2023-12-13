@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Model containing vectors to store data for each day of the week
 const appointmentsSchema = new mongoose.Schema({
   monday: {
     type: Array,
@@ -24,14 +23,12 @@ const appointmentsSchema = new mongoose.Schema({
   sunday: {
     type: Array,
   },
-  // User responsible for appointments
   user: { 
     type: Schema.Types.ObjectId, 
     ref: 'User',
   },
 });
 
-// 
 const Appointments = mongoose.model('Appointments', appointmentsSchema);
 
 module.exports = Appointments;

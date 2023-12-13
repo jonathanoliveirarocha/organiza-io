@@ -1,8 +1,6 @@
-// Defining selected day variables
-var clickedID=0
-var clickedDayWeek=""
+let clickedID=0
+let clickedDayWeek=""
 
-// Show addition form
 function add(){
     window.scrollTo({
         top: 0
@@ -13,7 +11,6 @@ function add(){
     document.querySelector(".addForm").style.display ="flex"
 }
 
-// Close add or description window
 function closeWindow(){
     document.body.style.overflow = 'auto';
     document.querySelector(".efect").style.display ="none"
@@ -34,7 +31,6 @@ function closeWindow(){
     document.querySelector('#desc').value = null
 }
 
-// Fill data and show description form
 function describe(list){
     window.scrollTo({
         top: 0
@@ -52,14 +48,12 @@ function describe(list){
     document.querySelector('#descDesc').value = list[4]
 }
 
-// Close status message
 function closeMsg(){
     document.querySelector(".status").style.display = "none"
 }
 
-// Animation msgDialog
 window.onload = function () {
-    var status = document.querySelector('.status')
+    let status = document.querySelector('.status')
     setTimeout(() => {
         status.classList.add('hidden'); 
     }, 4000); 
@@ -70,7 +64,6 @@ window.onload = function () {
     }, 5500);
 } 
 
-// Convert day in Portuguese to English
 function convertToEnglish(day){
     switch(day) {
         case 'Segunda-Feira':
@@ -91,27 +84,25 @@ function convertToEnglish(day){
     }
 }
 
-// Access remove element route
 function removeElement(){
     window.location.href = `/removerElemento/${clickedDayWeek}/${clickedID}`;
 }
 
-// Dark-mode
-    // Elements
-    var btnDarkMode = document.getElementById('dark-mode-btn')
-    var isEnabled = localStorage.getItem('dark-mode')
-    var daysDiv = document.querySelector('.days')
-    var titleh1 = document.querySelectorAll('.title h1')
-    var appointmentsDivs = document.querySelectorAll('.appointments')
-    var titleDivs = document.querySelectorAll('.title')
-    var updateFormDiv = document.querySelector('.updateForm')
-    var selects = document.querySelectorAll('select')
-    var textarea = document.querySelectorAll('textarea')
-    var addFormBtn = document.querySelector('#addFormBtn')
-    var inputs = document.querySelectorAll('input')
+
+    let btnDarkMode = document.getElementById('dark-mode-btn')
+    let isEnabled = localStorage.getItem('dark-mode')
+    let daysDiv = document.querySelector('.days')
+    let titleh1 = document.querySelectorAll('.title h1')
+    let appointmentsDivs = document.querySelectorAll('.appointments')
+    let titleDivs = document.querySelectorAll('.title')
+    let updateFormDiv = document.querySelector('.updateForm')
+    let selects = document.querySelectorAll('select')
+    let textarea = document.querySelectorAll('textarea')
+    let addFormBtn = document.querySelector('#addFormBtn')
+    let inputs = document.querySelectorAll('input')
 
     function turningElementsDark(){
-        // Turning elements in dark-mode
+    
         document.body.classList.toggle('dark-mode')
         daysDiv.classList.toggle('dark-mode')
         updateFormDiv.classList.toggle('dark-mode')
