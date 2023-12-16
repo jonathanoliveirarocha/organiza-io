@@ -1,14 +1,6 @@
 const mongoose = require('mongoose')
-
-let temp = '';
-
-if(process.env.NODE_ENV == 'production'){
-  temp = '<PRODUCTION-URI>'
-}else{
-  temp = '<LOCAL-URI>'
-}
-
-const url = temp;
+require("dotenv").config();
+const url = process.env.DATABASE;
 
 mongoose.connect(url, {
   useNewUrlParser: true,

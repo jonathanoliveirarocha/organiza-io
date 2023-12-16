@@ -12,6 +12,7 @@ const { loggedIn } = require("./helpers/loggedIn");
 require("./config/auth")(passport);
 const session = require("express-session");
 const flash = require("connect-flash");
+require("dotenv").config();
 
 app.engine("handlebars", handlebars.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -22,7 +23,7 @@ app.use(bodyParser.json());
 
 app.use(
   session({
-    secret: "jonathanorganizaio",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
