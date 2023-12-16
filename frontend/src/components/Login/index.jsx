@@ -15,8 +15,8 @@ const Form = () => {
   return (
     <>
       <div className="xl:w-2/5 w-full h-full flex justify-center items-center p-6">
-        <form className="w-[400px] text-[#87878a] space-y-8">
-          <h1 className="text-[#d75413] text-3xl font-bold text-center">
+        <form className="w-[400px] text-tertiary space-y-8">
+          <h1 className="text-primary text-3xl font-bold text-center">
             Login
           </h1>
           <div className="w-full space-y-2">
@@ -37,11 +37,11 @@ const Form = () => {
               placeholder="Digite sua Senha"
             />
           </div>
-          <button className="w-full h-[30px] bg-[#d75413] rounded-md text-[#fffafa] text-sm hover:opacity-90 shadow-lg">
+          <button className="w-full h-[30px] bg-primary rounded-md text-white text-sm hover:opacity-90 shadow-lg">
             Entrar
           </button>
           <p className="text-center">
-            <a href="/cadastro" className="text-[#d75413] hover:opacity-80">
+            <a href="/cadastro" className="text-primary hover:opacity-80">
               Cadastre-se
             </a>
           </p>
