@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <>
-      <header className="w-full h-[50px] fixed bg-secondary">
+      <header className="w-full h-[50px] fixed bg-secondary z-50">
         <div className="w-full h-full relative flex items-center px-6">
           <h1 className="hidden sm:block text-white text-xl font-bold">
             Organiza<span className="text-primary">.io</span>
