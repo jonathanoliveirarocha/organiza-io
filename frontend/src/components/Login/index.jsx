@@ -22,7 +22,7 @@ const Form = () => {
           <div className="w-full space-y-2">
             <label htmlFor="email">E-mail:</label>
             <input
-              className="w-full h-[30px] shadow-lg text-sm rounded-md p-3"
+              className="w-full h-[30px] shadow-lg text-sm rounded-md px-3"
               type="email"
               name="email"
               placeholder="Digite seu E-mail"
@@ -31,7 +31,7 @@ const Form = () => {
           <div className="w-full space-y-2">
             <label htmlFor="password">Senha:</label>
             <input
-              className="w-full h-[30px] shadow-lg text-sm rounded-md p-3"
+              className="w-full h-[30px] shadow-lg text-sm rounded-md px-3"
               type="password"
               name="password"
               placeholder="Digite sua Senha"
