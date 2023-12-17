@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Header from "../Partials/Header";
-import Footer from "../Partials/Footer";
-import CloseIcon from "../../assets/close-icon.svg";
+import Header from "../../Partials/Header";
+import Footer from "../../Partials/Footer";
+import CloseIcon from "../../../assets/close-icon.svg";
 
 const Home = () => {
   const [newTask, SetNewTask] = useState(false);

@@ -1,6 +1,6 @@
-import Banner from "../Partials/Banner";
+import Banner from "../../Partials/Banner";
 
-const SignUp = () => {
+const Login = () => {
   return (
     <>
       <div className="w-full h-screen flex">
@@ -17,17 +17,8 @@ const Form = () => {
       <div className="xl:w-2/5 w-full h-full flex justify-center items-center p-6">
         <form className="w-[400px] text-tertiary space-y-8">
           <h1 className="text-primary text-3xl font-bold text-center">
-            Cadastro
+            Login
           </h1>
-          <div className="w-full space-y-2">
-            <label htmlFor="user">Usuário:</label>
-            <input
-              className="w-full h-[30px] shadow-lg text-sm rounded-md px-3"
-              type="text"
-              name="user"
-              placeholder="Digite seu Usuário"
-            />
-          </div>
           <div className="w-full space-y-2">
             <label htmlFor="email">E-mail:</label>
             <input
@@ -46,21 +37,12 @@ const Form = () => {
               placeholder="Digite sua Senha"
             />
           </div>
-          <div className="w-full space-y-2">
-            <label htmlFor="passwordRepeat">Confirme sua Senha:</label>
-            <input
-              className="w-full h-[30px] shadow-lg text-sm rounded-md px-3"
-              type="password"
-              name="passwordRepeat"
-              placeholder="Confirme sua Senha"
-            />
-          </div>
           <button className="w-full h-[30px] bg-primary rounded-md text-white text-sm hover:opacity-90 shadow-lg">
-            Cadastrar
+            Entrar
           </button>
           <p className="text-center">
-            <a href="/" className="text-primary hover:opacity-80">
-              Já Possui uma conta? Entrar.
+            <a href="/cadastro" className="text-primary hover:opacity-80">
+              Cadastre-se
             </a>
           </p>
         </form>
@@ -69,4 +51,4 @@ const Form = () => {
   );
 };
 
-export default SignUp;
+export default Login;
