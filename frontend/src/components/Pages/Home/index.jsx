@@ -106,7 +106,7 @@ const DayWeek = ({ day, tasks, handleClick }) => {
         <div className="bg-gray-200 py-2">
           <h2 className="text-center text-xl font-bold">{day}</h2>
         </div>
-        <div className="xl:h-[500px] h-48 p-1 text-center space-y-1">
+        <div className="xl:h-[500px] overflow-y-auto h-48 p-1 text-center space-y-1">
           {tasks.map((element, index) => (
             <div
               className="p-1 bg-gray-200 hover:bg-gray-300 cursor-pointer text-sm text-gray-600 relative"
