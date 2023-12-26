@@ -1,31 +1,36 @@
 const Appointments = require("../models/Appointments");
 
 const appointmentsService = {
-  getAppointments: async (user) => {
-    let appointments = await Appointments.find({ user: user._id });
+  createAppointmentsCollection: async (userId) => {
+    const NewAppointments = new Appointments({ user: userId });
+    await NewAppointments.save();
+  },
+
+  getAppointments: async (userId) => {
+    const appointments = await Appointments.find({ user: userId });
     return appointments;
   },
 
-  addAppointment: async (user, day, appointment) => {
+  addAppointment: async (userId, day, appointment) => {
     await Appointments.findOneAndUpdate(
-      { user: user._id },
+      { user: userId },
       {
         $push: {
-          [day]: [appointment],
+          [day]: appointment,
         },
       }
     );
   },
 
-  deleteAppointment: async (user, day, index) => {
+  deleteAppointment: async (userId, day, index) => {
     await Appointments.updateOne(
-      { user: user._id },
+      { user: userId },
       {
         $unset: { [`${day}.${index}`]: null },
       }
     );
     await Appointments.updateOne(
-      { user: req.user },
+      { user: userId },
       {
         $pull: { [`${day}`]: null },
       }

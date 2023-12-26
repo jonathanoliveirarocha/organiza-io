@@ -1,4 +1,5 @@
 const authService = require("../services/auth.service");
+const appointmentsService = require("../services/appointments.service");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -44,6 +45,9 @@ const authController = {
         email,
         password: hashedPassword,
       });
+
+      await appointmentsService.createAppointmentsCollection(user._id);
+
       const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
         expiresIn: "12h",
       });

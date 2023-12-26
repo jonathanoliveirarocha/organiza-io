@@ -15,6 +15,15 @@ const authService = {
       return null;
     }
   },
+
+  getUserById: async (userId) => {
+    const searchUser = User.findOne({ _id: userId });
+    if (searchUser) {
+      return searchUser;
+    } else {
+      return null;
+    }
+  },
 };
 
 module.exports = authService;
