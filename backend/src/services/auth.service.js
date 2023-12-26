@@ -1,24 +1,19 @@
 const User = require("../models/User");
-const bcrypt = require("bcryptjs");
 
 const authService = {
-  signup: async (user) => {
+  addUser: async (user) => {
     const newUser = new User(user);
     await newUser.save();
+    return newUser;
   },
-  login: async (user) => {
-    User.findOne({ email: user.email }).then((searchUser) => {
-      if (!searchUser) {
-        return 0;
-      }
-      bcrypt.compare(user.password, searchUser.password, (err, logged) => {
-        if (logged) {
-          return 1;
-        } else {
-          return 2;
-        }
-      });
-    });
+
+  getUser: async (user) => {
+    const searchUser = User.findOne({ email: user.email });
+    if (searchUser) {
+      return searchUser;
+    } else {
+      return null;
+    }
   },
 };
 
