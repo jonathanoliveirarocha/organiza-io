@@ -8,6 +8,7 @@ const ERROR_MESSAGES = {
   INVALID_EMAIL: "O e-mail deve ser válido!",
   INVALID_USERNAME: "Nome de usuário inválido!",
   SHORT_PASSWORD: "A senha deve ter pelo menos 8 caracteres!",
+  DIFFERENT_PASSWORDS: "As senhas não conferem!",
   USER_NOT_FOUND: "E-mail não cadastrado!",
   INCORRECT_PASSWORD: "Senha incorreta!",
   INTERNAL_ERROR: "Houve um erro interno!",
@@ -20,8 +21,8 @@ const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 const authController = {
   signup: async (req, res) => {
     try {
-      const { username, email, password } = req.body;
-
+      const { username, email, password, passwordRepeat } = req.body;
+      
       const existingUser = await authService.getUser({ email, password });
       if (existingUser) {
         return response(res, 409, { error: ERROR_MESSAGES.EMAIL_IN_USE });
@@ -37,6 +38,13 @@ const authController = {
 
       if (!password || typeof password !== "string" || password.length < 8) {
         return response(res, 400, { error: ERROR_MESSAGES.SHORT_PASSWORD });
+      }
+      console.log(password)
+      console.log(passwordRepeat)
+      if (password !== passwordRepeat) {
+        return response(res, 400, {
+          error: ERROR_MESSAGES.DIFFERENT_PASSWORDS,
+        });
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);

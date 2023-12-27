@@ -8,21 +8,27 @@ import NotFound from "./components/Pages/NotFound";
 const App = () => {
   const tokenStorage = JSON.parse(localStorage.getItem("tokenStorage")) || null;
   const [token, setToken] = useState(tokenStorage);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [data, setData] = useState({});
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (token) {
           const response = await fetch(
-            "https://dev-relate.vercel.app/auth/validate",
+            "http://localhost:8000/api/appointments/get_data",
             {
-              method: "POST",
+              method: "GET",
               headers: {
                 Authorization: token,
               },
             }
           );
-          response.ok ? setIsAuthenticated(true) : setIsAuthenticated(false);
+
+          const data = await response.json();
+
+          if (response.ok) {
+            setData(data);
+          }
         }
       } catch (error) {
         console.log("Erro ao buscar dados da API");
@@ -33,8 +39,9 @@ const App = () => {
 
   const Private = ({ Item }) => {
     const signed = true;
-    return signed > 0 ? <Home /> : <Login />;
+    return signed > 0 ? <Home loadedData={data} /> : <Login />;
   };
+
   return (
     <>
       <Router>

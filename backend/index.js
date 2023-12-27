@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 require("dotenv").config();
 require("./src/config/db");
@@ -8,6 +9,8 @@ const PORT = process.env.PORT | 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
 
 app.use("/api/appointments", appointments);
 app.use("/api/auth", auth);

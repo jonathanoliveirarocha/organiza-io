@@ -3,12 +3,12 @@ import Header from "../../Partials/Header";
 import Footer from "../../Partials/Footer";
 import CloseIcon from "../../../assets/close-icon.svg";
 
-const Home = () => {
+const Home = ({loadedData}) => {
   const [controlTask, setControlTask] = useState(false);
   const [controlTaskType, setControlTaskType] = useState("create");
   const [selected, setSelected] = useState(null);
   const [data, setData] = useState({
-    monday: [["10:00", "11:00", "atividade", "teste"]],
+    monday: [],
     tuesday: [],
     wednesday: [],
     thursday: [],
@@ -16,6 +16,8 @@ const Home = () => {
     saturday: [],
     sunday: [],
   });
+
+  console.log()
 
   const handleClick = (type, data, day) => {
     if (type == "create") {
@@ -32,7 +34,7 @@ const Home = () => {
   return (
     <>
       <div className="relative">
-        <Header />
+        <Header username={loadedData.username}/>
         <div className="w-full min-h-screen flex items-center justify-center py-[80px]">
           <div className="space-y-8">
             <div className="shadow-sm">
