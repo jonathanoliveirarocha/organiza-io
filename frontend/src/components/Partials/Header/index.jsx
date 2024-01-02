@@ -1,4 +1,9 @@
 const Header = ({ username }) => {
+  const deleteToken = () => {
+    localStorage.removeItem("tokenStorage");
+    location.reload();
+  };
+
   return (
     <>
       <header className="w-full h-[50px] fixed bg-secondary z-50">
@@ -10,7 +15,10 @@ const Header = ({ username }) => {
             <span className="text-white hover:text-primary cursor-pointer text-sm">
               {username}
             </span>
-            <button className="py-1 text-sm w-20 bg-primary text-white rounded-md hover:opacity-90">
+            <button
+              className="py-1 text-sm w-20 bg-primary text-white rounded-md hover:opacity-90"
+              onClick={deleteToken}
+            >
               Sair
             </button>
           </div>

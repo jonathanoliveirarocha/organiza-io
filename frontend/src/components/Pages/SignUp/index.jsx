@@ -33,6 +33,7 @@ const Form = () => {
 
       if (response.ok) {
         localStorage.setItem("tokenStorage", JSON.stringify(data.token));
+        window.location.href = "/"
       } else {
         alert(data.error);
       }

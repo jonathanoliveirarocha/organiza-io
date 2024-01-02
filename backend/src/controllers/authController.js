@@ -22,7 +22,7 @@ const authController = {
   signup: async (req, res) => {
     try {
       const { username, email, password, passwordRepeat } = req.body;
-      
+
       const existingUser = await authService.getUser({ email, password });
       if (existingUser) {
         return response(res, 409, { error: ERROR_MESSAGES.EMAIL_IN_USE });
@@ -39,8 +39,7 @@ const authController = {
       if (!password || typeof password !== "string" || password.length < 8) {
         return response(res, 400, { error: ERROR_MESSAGES.SHORT_PASSWORD });
       }
-      console.log(password)
-      console.log(passwordRepeat)
+
       if (password !== passwordRepeat) {
         return response(res, 400, {
           error: ERROR_MESSAGES.DIFFERENT_PASSWORDS,
@@ -56,9 +55,8 @@ const authController = {
 
       await appointmentsService.createAppointmentsCollection(user._id);
 
-      const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
-        expiresIn: "12h",
-      });
+      const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY);
+
       return response(res, 200, { token });
     } catch (error) {
       return response(res, 500, { error: ERROR_MESSAGES.INTERNAL_ERROR });
@@ -78,9 +76,8 @@ const authController = {
       if (!match) {
         return response(res, 401, { error: ERROR_MESSAGES.INCORRECT_PASSWORD });
       }
-      const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
-        expiresIn: "12h",
-      });
+      const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY);
+
       return response(res, 200, { token });
     } catch (error) {
       return response(res, 500, { error: ERROR_MESSAGES.INTERNAL_ERROR });

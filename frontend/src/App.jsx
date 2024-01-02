@@ -25,7 +25,6 @@ const App = () => {
           );
 
           const data = await response.json();
-
           if (response.ok) {
             setData(data);
           }
@@ -34,21 +33,20 @@ const App = () => {
         console.log("Erro ao buscar dados da API");
       }
     };
+
     fetchData();
   }, [token]);
 
   const Private = ({ Item }) => {
-    const signed = true;
-    return signed > 0 ? <Home loadedData={data} /> : <Login />;
+    return token ? <Home loadedData={data} /> : <Login />;
   };
 
   return (
     <>
       <Router>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+          <Route exact path="/" element={<Private Item={Home} />} />
           <Route exact path="/cadastro" element={<SignUp />} />
-          <Route exact path="/inicio" element={<Private Item={Home} />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
       </Router>

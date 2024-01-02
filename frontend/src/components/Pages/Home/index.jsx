@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../Partials/Header";
 import Footer from "../../Partials/Footer";
 import CloseIcon from "../../../assets/close-icon.svg";
 
-const Home = ({loadedData}) => {
+const Home = ({ loadedData }) => {
   const [controlTask, setControlTask] = useState(false);
   const [controlTaskType, setControlTaskType] = useState("create");
   const [selected, setSelected] = useState(null);
@@ -17,7 +17,22 @@ const Home = ({loadedData}) => {
     sunday: [],
   });
 
-  console.log()
+  useEffect(() => {
+    const loadingData = () => {
+      if (loadedData.appointments && loadedData.appointments[0]) {
+        setData({
+          monday: loadedData.appointments[0].monday,
+          tuesday: loadedData.appointments[0].tuesday,
+          wednesday: loadedData.appointments[0].wednesday,
+          thursday: loadedData.appointments[0].thursday,
+          friday: loadedData.appointments[0].friday,
+          saturday: loadedData.appointments[0].saturday,
+          sunday: loadedData.appointments[0].sunday,
+        });
+      }
+    };
+    loadingData();
+  }, []);
 
   const handleClick = (type, data, day) => {
     if (type == "create") {
@@ -34,7 +49,7 @@ const Home = ({loadedData}) => {
   return (
     <>
       <div className="relative">
-        <Header username={loadedData.username}/>
+        <Header username={loadedData.username} />
         <div className="w-full min-h-screen flex items-center justify-center py-[80px]">
           <div className="space-y-8">
             <div className="shadow-sm">

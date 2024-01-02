@@ -31,6 +31,7 @@ const Form = () => {
 
       if (response.ok) {
         localStorage.setItem("tokenStorage", JSON.stringify(data.token));
+        location.reload();
       } else {
         alert(data.error);
       }
