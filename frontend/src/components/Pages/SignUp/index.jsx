@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Banner from "../../Partials/Banner";
+import { authService } from "../../../api/auth.service";
 
 const SignUp = () => {
   return (
@@ -20,25 +21,19 @@ const Form = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:8000/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, email, password, passwordRepeat }),
-      });
+    const response = await authService.signupUser({
+      username,
+      email,
+      password,
+      passwordRepeat,
+    });
+    const data = await response.json();
 
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem("tokenStorage", JSON.stringify(data.token));
-        window.location.href = "/"
-      } else {
-        alert(data.error);
-      }
-    } catch (error) {
-      console.log("Erro ao fazer requisição ao servidor!");
+    if (response.ok) {
+      localStorage.setItem("tokenStorage", JSON.stringify(data.token));
+      window.location.href = "/";
+    } else {
+      alert(data.error);
     }
   };
 
