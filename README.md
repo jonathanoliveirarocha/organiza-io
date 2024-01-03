@@ -53,7 +53,7 @@ The project came about with the aim of facilitating my weekly organization, crea
 
    ```bash
     DATABASE_URI='<YOUR-MONGODB-DATABASE-URI>'
-    SECRET_KEY="<SECRETE-CODE-TO-SESSION>"
+    SECRET_KEY="<SECRET-CODE-TO-SESSION>"
    ```
 
 4. Replace the application domain with the local address in the constant "BASE_URL", in the files in <a href="/frontend/src/api">/frontend/src/api</a>
