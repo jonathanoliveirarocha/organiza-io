@@ -11,7 +11,7 @@
 
 ## What it is
 
-The project came about with the aim of facilitating my weekly organization, creating a schedule so that I could write down my actions, organizing them in a way that makes it easier to view. So that I could pass this idea forward, I created a registration system so that several people can use the same system, all while saving each person's data in the cloud, to access from anywhere, on different devices. This data can be expanded to each registered appointment, thus showing the complete description of each activity, as well as its possible deletion. To better adapt the appearance to each person's preference, I created a selection for a light or night theme.
+The project came about with the aim of facilitating my weekly organization, creating a schedule so that I could write down my actions, organizing them in a way that makes it easier to view. So that I could pass this idea forward, I created a registration system so that several people can use the same system, all while saving each person's data in the cloud, to access from anywhere, on different devices. This data can be expanded to each registered appointment, thus showing the complete description of each activity, as well as its possible deletion.
 
 > Program developed in my native language (Portuguese).
 
