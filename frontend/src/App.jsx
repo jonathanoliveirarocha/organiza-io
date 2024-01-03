@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { appointmentsService } from "./api/appointments.service";
 import Login from "./components/Pages/Login";
 import SignUp from "./components/Pages/SignUp";
 import Home from "./components/Pages/Home";
@@ -12,25 +13,12 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        if (token) {
-          const response = await fetch(
-            "http://localhost:8000/api/appointments/get_data",
-            {
-              method: "GET",
-              headers: {
-                Authorization: token,
-              },
-            }
-          );
-
-          const data = await response.json();
-          if (response.ok) {
-            setData(data);
-          }
+      if (token) {
+        const response = await appointmentsService.getData(token);
+        const data = await response.json();
+        if (response.ok) {
+          setData(data);
         }
-      } catch (error) {
-        console.log("Erro ao buscar dados da API");
       }
     };
 
@@ -38,7 +26,7 @@ const App = () => {
   }, [token]);
 
   const Private = ({ Item }) => {
-    return token ? <Home loadedData={data} /> : <Login />;
+    return token ? <Home loadedData={data} token={token} /> : <Login />;
   };
 
   return (

@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Header from "../../Partials/Header";
 import Footer from "../../Partials/Footer";
 import CloseIcon from "../../../assets/close-icon.svg";
+import { appointmentsService } from "../../../api/appointments.service";
 
-const Home = ({ loadedData }) => {
+const Home = ({ loadedData, token }) => {
   const [controlTask, setControlTask] = useState(false);
   const [controlTaskType, setControlTaskType] = useState("create");
   const [selected, setSelected] = useState(null);
@@ -17,33 +18,50 @@ const Home = ({ loadedData }) => {
     sunday: [],
   });
 
+  const ordHour = (a, b) => {
+    const ha = a[0];
+    const hb = b[0];
+    return ha.localeCompare(hb);
+  };
+
   useEffect(() => {
     const loadingData = () => {
       if (loadedData.appointments && loadedData.appointments[0]) {
         setData({
-          monday: loadedData.appointments[0].monday,
-          tuesday: loadedData.appointments[0].tuesday,
-          wednesday: loadedData.appointments[0].wednesday,
-          thursday: loadedData.appointments[0].thursday,
-          friday: loadedData.appointments[0].friday,
-          saturday: loadedData.appointments[0].saturday,
-          sunday: loadedData.appointments[0].sunday,
+          monday: loadedData.appointments[0].monday.sort(ordHour),
+          tuesday: loadedData.appointments[0].tuesday.sort(ordHour),
+          wednesday: loadedData.appointments[0].wednesday.sort(ordHour),
+          thursday: loadedData.appointments[0].thursday.sort(ordHour),
+          friday: loadedData.appointments[0].friday.sort(ordHour),
+          saturday: loadedData.appointments[0].saturday.sort(ordHour),
+          sunday: loadedData.appointments[0].sunday.sort(ordHour),
         });
       }
     };
+
     loadingData();
   }, []);
 
-  const handleClick = (type, data, day) => {
+  const handleClick = (type, data, day, index) => {
     if (type == "create") {
       setControlTaskType("create");
       setSelected(null);
     } else if (type == "show") {
       setControlTaskType("show");
-      data.push(day);
+      data.push(day, index);
       setSelected(data);
     }
     setControlTask(!controlTask);
+  };
+
+  const addData = async (data) => {
+    await appointmentsService.postData(token, data);
+    location.reload();
+  };
+
+  const removeData = async (day, index) => {
+    await appointmentsService.deleteData(token, { day, index });
+    location.reload();
   };
 
   return (
@@ -69,6 +87,8 @@ const Home = ({ loadedData }) => {
                   type={controlTaskType}
                   selected={selected}
                   handleClick={handleClick}
+                  removeData={removeData}
+                  addData={addData}
                 />
               ) : null}
             </div>
@@ -129,7 +149,7 @@ const DayWeek = ({ day, tasks, handleClick }) => {
               className="p-1 bg-gray-200 hover:bg-gray-300 cursor-pointer text-sm text-gray-600 relative"
               key={index}
               onClick={() => {
-                handleClick("show", element, day);
+                handleClick("show", element, day, index);
               }}
             >
               <span className="absolute left-1">{element[0]}</span>
@@ -143,7 +163,7 @@ const DayWeek = ({ day, tasks, handleClick }) => {
   );
 };
 
-const ControlTask = ({ type, handleClick, selected }) => {
+const ControlTask = ({ type, handleClick, selected, removeData, addData }) => {
   return (
     <>
       <div className="w-full h-screen xl:absolute fixed top-0 left-0 flex justify-center items-center">
@@ -157,17 +177,63 @@ const ControlTask = ({ type, handleClick, selected }) => {
             alt="Botão para fechar janela"
           />
           {/* Used Image: https://www.svgrepo.com/svg/521106/close */}
-          <FormTask type={type} data={selected} /> :
+          <FormTask
+            type={type}
+            data={selected}
+            removeData={removeData}
+            addData={addData}
+          />
+          :
         </div>
       </div>
     </>
   );
 };
 
-const FormTask = ({ type, data }) => {
+const FormTask = ({ type, data, removeData, addData }) => {
+  const [day, setDay] = useState("monday");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+  const [activity, setActivity] = useState("");
+  const [description, setDescription] = useState("");
+
+  const removeElement = (e) => {
+    e.preventDefault();
+    removeData(convertPortugueseToEnglish(data[4]), data[5]);
+  };
+
+  const addElement = (e) => {
+    e.preventDefault();
+    addData({ day, start, end, activity, description });
+  };
+
+  const convertPortugueseToEnglish = (dayInPortuguese) => {
+    switch (dayInPortuguese) {
+      case "domingo":
+        return "sunday";
+      case "Segunda-Feira":
+        return "monday";
+      case "Terça-Feira":
+        return "tuesday";
+      case "Quarta-Feira":
+        return "wednesday";
+      case "Quinta-Feira":
+        return "thursday";
+      case "Sexta-Feira":
+        return "friday";
+      case "Sábado":
+        return "saturday";
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
-      <form className="max-w-[400px] text-tertiary space-y-8 mx-auto px-2 py-10">
+      <form
+        onSubmit={addElement}
+        className="max-w-[400px] text-tertiary space-y-8 mx-auto px-2 py-10"
+      >
         <h1 className="text-primary text-3xl font-bold text-center">
           {type == "create" ? "Adicionar" : "Descrição"}
         </h1>
@@ -177,7 +243,10 @@ const FormTask = ({ type, data }) => {
             name="day"
             className="w-full h-[30px] shadow-lg text-sm rounded-md px-3 select-none"
             disabled={data ? true : false}
-            value={data ? data[4] : null}
+            value={data ? convertPortugueseToEnglish(data[4]) : null}
+            onChange={(e) => {
+              setDay(e.target.value);
+            }}
           >
             <option value="monday">Segunda-Feira</option>
             <option value="tuesday">Terça-Feira</option>
@@ -196,6 +265,10 @@ const FormTask = ({ type, data }) => {
             name="start"
             disabled={data ? true : false}
             value={data ? data[0] : null}
+            onChange={(e) => {
+              setStart(e.target.value);
+            }}
+            required
           />
         </div>
         <div className="w-full space-y-2">
@@ -206,6 +279,10 @@ const FormTask = ({ type, data }) => {
             name="end"
             disabled={data ? true : false}
             value={data ? data[1] : null}
+            onChange={(e) => {
+              setEnd(e.target.value);
+            }}
+            required
           />
         </div>
         <div className="w-full space-y-2">
@@ -218,11 +295,16 @@ const FormTask = ({ type, data }) => {
             maxLength="11"
             disabled={data ? true : false}
             value={data ? data[2] : null}
+            onChange={(e) => {
+              setActivity(e.target.value);
+            }}
+            required
           />
         </div>
         <div className="w-full space-y-2">
           <label htmlFor="description">Descrição:</label>
           <textarea
+            required
             rows="4"
             className="w-full shadow-lg text-sm rounded-md px-3 resize-none"
             type="text"
@@ -230,12 +312,19 @@ const FormTask = ({ type, data }) => {
             placeholder="Digite uma Breve Descrição da Atividade"
             disabled={data ? true : false}
             value={data ? data[3] : null}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
           />
         </div>
         <button
+          type={type == "create" ? "submit" : null}
           className={`w-full h-[30px] ${
             type == "create" ? "bg-primary" : "bg-red-500/90"
           } rounded-md text-white text-sm hover:opacity-90 shadow-lg`}
+          onClick={(e) => {
+            type == "create" ? null : removeElement(e);
+          }}
         >
           {type == "create" ? "Adicionar" : "Remover"}
         </button>
