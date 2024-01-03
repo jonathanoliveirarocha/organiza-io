@@ -209,7 +209,7 @@ const FormTask = ({ type, data, removeData, addData }) => {
 
   const convertPortugueseToEnglish = (dayInPortuguese) => {
     switch (dayInPortuguese) {
-      case "domingo":
+      case "Domingo":
         return "sunday";
       case "Segunda-Feira":
         return "monday";
