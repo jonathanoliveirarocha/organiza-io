@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000/api/appointments";
+const BASE_URL = "https://organiza-io-api.vercel.app/api/appointments";
 
 const appointmentsService = {
   getData: async (token) => {

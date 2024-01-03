@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000/api/auth";
+const BASE_URL = "https://organiza-io-api.vercel.app/api/auth";
 
 const authService = {
   loginUser: async (user) => {
